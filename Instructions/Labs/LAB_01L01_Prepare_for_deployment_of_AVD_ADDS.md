@@ -35,7 +35,7 @@ Vous devez préparer le déploiement d’un environnement Active Directory Domai
 
 ## Instructions
 
-### Exercice 0 : Augmentez le nombre de quotas des processeurs virtuels
+### Exercice 0 : Augmenter le nombre de quotas des processeurs virtuels
 
 Les principales tâches de cet exercice sont les suivantes
 
@@ -44,8 +44,8 @@ Les principales tâches de cet exercice sont les suivantes
 
 #### Tâche 1 : Identifier l’utilisation actuelle des processeurs virtuels
 
-1. À partir de votre ordinateur labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Dans le portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils juste à droite de la zone de texte de recherche.
+1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [Portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
+1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
 1. Lorsque vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **PowerShell**. 
 
    >**Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**. 
@@ -96,7 +96,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Si vous y êtes invité, dans le volet **Demander une augmentation de quota**, sélectionnez **S’authentifier avec l’authentification multifacteur** et suivez les invites pour vous authentifier.
 1. Permettez à la demande de quota de se compléter.  Après quelques instants, le panneau **Détails du quota** spécifiera l’approbation de la demande et l’augmentation du quota. Fermez le panneau **Détails du quota**.
 
-   >**Remarque** : Selon le choix de la région Azure et de la demande actuelle, il peut être nécessaire de créer une demande de support. Pour obtenir des instructions sur le processus de création d’une demande de support, reportez-vous à [Créer une demande de support Azure](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
+   >**Remarque** : Selon le choix de la région Azure et la demande actuelle, il peut être nécessaire de créer une demande de support. Pour obtenir des instructions sur le processus de création d’une demande de support, reportez-vous à [Créer une demande de support Azure](https://docs.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Exercice 1 : Membre d’un domaine AD DS
 
@@ -113,7 +113,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans le navigateur web affichant le Portail Azure, accédez au panneau **Vue d’ensemble** du locataire Microsoft Entra et, dans la section **Gérer** du menu vertical à gauche, cliquez sur **Propriétés**.
 1. En bas du panneau **Propriétés** de votre locataire Microsoft Entra, sélectionnez le lien **Gérer la sécurité par défaut** .
 1. Dans le panneau **Activer la sécurité par défaut**, si nécessaire, sélectionnez **Non**, puis sélectionnez la case **Mon organisation utilise l’accès conditionnel**, puis sélectionnez **Enregistrer**.
-1. Dans le portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils juste à droite de la zone de texte de recherche.
+1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
 1. Lorsque vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **PowerShell**. 
 
    >**Remarque** : si c’est la première fois que vous démarrez **Cloud Shell** et que vous voyez le message **Vous n’avez aucun stockage monté**, sélectionnez l’abonnement que vous utilisez dans ce labo, puis sélectionnez **Créer un stockage**. 
@@ -179,11 +179,11 @@ Les principales tâches de cet exercice sont les suivantes
 
 > **Remarque** : Azure Bastion autorise la connexion aux machines virtuelles Azure sans les points de terminaison publics que vous avez déployés dans la tâche précédente de cet exercice, tout en fournissant une protection contre les attaques par force brute qui ciblent les informations d’identification au niveau du système d’exploitation.
 
-> **Remarque** : Vérifiez que la fonctionnalité de fenêtre contextuelle de votre navigateur est activée.
+> **Remarque** : Vérifiez que votre navigateur dispose de la fonctionnalité de fenêtre contextuelle activée.
 
-1. Dans la fenêtre du navigateur affichant le portail Azure, ouvrez un autre onglet, puis accédez au [portail Azure](https://portal.azure.com) à partir de cet onglet.
-1. Dans le portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils juste à droite de la zone de texte de recherche.
-1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour ajouter un sous-réseau nommé **AzureBastionSubnet** au réseau virtuel nommé **az140-adds-vnet11** que vous avez créé précédemment dans cet exercice :
+1. Dans la fenêtre du navigateur affichant le Portail Azure, ouvrez un autre onglet, et, dans l’onglet du navigateur, accédez au [Portail Azure](https://portal.azure.com).
+1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour ajouter un sous-réseau nommé **AzureBastionSubnet** au réseau virtuel nommé **az140-adds-vnet11** créé précédemment dans cet exercice :
 
    ```powershell
    $resourceGroupName = 'az140-11-RG'
@@ -197,14 +197,14 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Fermez le volet Cloud Shell.
 1. Dans le portail Azure, recherchez et sélectionnez **Bastions**, puis dans le panneau **Bastions**, sélectionnez **+ Créer**.
-1. Dans l’onglet **Base** du panneau **Créer un bastion**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer** :
+1. Sous l’onglet **De base** du panneau **Créer un bastion**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
    |---|---|
    |Abonnement|le nom de l’abonnement Azure que vous utilisez dans ce labo|
    |Resource group|**az140-11-RG**|
    |Nom|**az140-11-bastion**|
-   |Région|la même région Azure que celle dans laquelle vous avez déployé les ressources lors des tâches précédentes de cet exercice|
+   |Région|la même région Azure dans laquelle vous avez déployé les ressources dans les tâches précédentes de cet exercice|
    |Niveau|**De base**|
    |Réseau virtuel|**az140-adds-vnet11**|
    |Sous-réseau|**AzureBastionSubnet (10.0.254.0/24)**|

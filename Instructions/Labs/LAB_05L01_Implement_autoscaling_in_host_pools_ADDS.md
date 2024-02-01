@@ -7,12 +7,12 @@ lab:
 # Labo - Implémenter la mise à l’échelle automatique dans les pools d’hôtes (AD DS)
 # Manuel de labo de l’étudiant
 
-## Éléments nécessaires pour le labo
+## Dépendances du labo
 
-- Un abonnement Azure que vous utiliserez dans ce labo.
-- Un compte Microsoft ou un compte Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
+- Un abonnement Azure que vous allez utiliser dans ce labo.
+- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
 - Le labo terminé **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**
-- Le labo terminé **Déployer des pools d’hôtes et des hôtes de session à l’aide du portail Azure (AD DS)**
+- Le labo terminé **Déployer des pools d’hôtes et des hôtes de session à l’aide du Portail Azure (AD DS)**
 
 ## Durée estimée
 

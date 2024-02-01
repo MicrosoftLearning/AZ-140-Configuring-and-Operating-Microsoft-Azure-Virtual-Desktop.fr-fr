@@ -288,9 +288,9 @@ Les principales tâches de cet exercice sont les suivantes
 
 #### Tâche 2 : Déployer Azure Bastion 
 
-> **Remarque** : Azure Bastion autorise la connexion aux machines virtuelles Azure sans les points de terminaison publics déployés dans la tâche précédente de cet exercice, tout en fournissant une protection contre les attaques par force brute qui ciblent les informations d’identification au niveau du système d’exploitation.
+> **Remarque** : Azure Bastion autorise la connexion aux machines virtuelles Azure sans les points de terminaison publics que vous avez déployés dans la tâche précédente de cet exercice, tout en fournissant une protection contre les attaques par force brute qui ciblent les informations d’identification au niveau du système d’exploitation.
 
-> **Remarque** : Vérifiez que la fonctionnalité de fenêtre contextuelle de votre navigateur est activée.
+> **Remarque** : Vérifiez que votre navigateur dispose de la fonctionnalité de fenêtre contextuelle activée.
 
 1. Dans la fenêtre du navigateur affichant le Portail Azure, ouvrez un autre onglet, et, dans l’onglet du navigateur, accédez au [**Portail Azure**](https://portal.azure.com).
 1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
@@ -307,7 +307,7 @@ Les principales tâches de cet exercice sont les suivantes
    ```
 
 1. Fermez le volet Cloud Shell.
-1. Dans le Portail Azure, recherchez et sélectionnez **Bastions**, puis dans le panneau **Bastions**, sélectionnez **+ Créer**.
+1. Dans le portail Azure, recherchez et sélectionnez **Bastions**, puis dans le panneau **Bastions**, sélectionnez **+ Créer**.
 1. Sous l’onglet **De base** du panneau **Créer un bastion**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|

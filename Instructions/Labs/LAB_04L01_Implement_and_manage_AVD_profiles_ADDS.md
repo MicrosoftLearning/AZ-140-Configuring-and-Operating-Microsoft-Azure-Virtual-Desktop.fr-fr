@@ -9,8 +9,8 @@ lab:
 
 ## Dépendances du labo
 
-- Un abonnement Azure que vous utiliserez dans ce labo.
-- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
+- Un abonnement Azure que vous allez utiliser dans ce labo.
+- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
 - Le labo **Préparer le déploiement d’Azure Virtual Desktop (AD DS)** terminé
 - Le labo **Implémenter et gérer le stockage pour WVD (AD DS)** terminé
 
@@ -221,9 +221,9 @@ Les principales tâches de cet exercice sont les suivantes
 
 >**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure approvisionnées et utilisées dans ce labo pour réduire les frais de calcul correspondants
 
-#### Tâche 1 : Libérer les machines virtuelles Azure approvisionnées et utilisées dans le labo
+#### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées et utilisées dans le labo
 
-1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
 1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées et utilisées dans ce labo :
 
    ```powershell

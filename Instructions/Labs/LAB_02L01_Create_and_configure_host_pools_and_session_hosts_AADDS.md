@@ -7,7 +7,7 @@ lab:
 # Labo - Créer et configurer des pools d’hôtes et des hôtes de session (Microsoft Entra DS)
 # Manuel de labo de l’étudiant
 
-## Éléments nécessaires pour le labo
+## Dépendances du labo
 
 - Un abonnement Azure
 - Un compte Microsoft ou un compte Microsoft Entra disposant du rôle Administrateur général pour le locataire Microsoft Entra qui est associé à l’abonnement Azure, et disposant du rôle Propriétaire ou Contributeur dans l’abonnement Azure
@@ -46,9 +46,9 @@ Les principales tâches de cet exercice sont les suivantes
 #### Tâche 1 : Préparer le domaine AD DS et l’abonnement Azure pour le déploiement d’un pool d’hôtes Azure Virtual Desktop
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en utilisant les informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Sur votre ordinateur de labo, dans le portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis dans le panneau **Machines virtuelles**, sélectionnez l’entrée **az140-cl-vm11a**. Cela ouvre le panneau **az140-cl-vm11a**.
+1. À partir de votre ordinateur de labo, dans le Portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis, dans le panneau **Machines virtuelles**, sélectionnez l’entrée **az140-cl-vm11a**. Cette opération ouvre le panneau **az140-cl-vm11a**.
 1. Dans le panneau **az140-cl-vm11a**, sélectionnez **Se connecter**, puis dans le menu déroulant, sélectionnez **Bastion**. Sous l’onglet **Bastion** du panneau **az140-cl-vm11a\| Se connecter**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter** :
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -292,24 +292,24 @@ Les principales tâches de cet exercice sont les suivantes
 
 Les principales tâches de cet exercice sont les suivantes
 
-1. Arrêter et libérer les machines virtuelles Azure provisionnées et utilisées au cours du labo
+1. Arrêter et libérer les machines virtuelles Azure approvisionnées et utilisées dans le labo
 
->**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure provisionnées et utilisées dans ce labo pour réduire les frais de calcul correspondants
+>**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure approvisionnées et utilisées dans ce labo pour réduire les frais de calcul correspondants
 
-#### Tâche 1 : Libérer les machines virtuelles Azure provisionnées et utilisées au cours du labo
+#### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées et utilisées dans le labo
 
-1. Basculez sur l’ordinateur de labo, puis dans la fenêtre de navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour lister toutes les machines virtuelles Azure créées et utilisées dans ce labo :
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées et utilisées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21a-RG'
    ```
 
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées et utilisées dans ce labo :
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées et utilisées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21a-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Remarque** : La commande s’exécute de manière asynchrone (comme l’indique le paramètre -NoWait), donc même si vous pouvez exécuter une autre commande PowerShell dans la même session PowerShell immédiatement après, il faut quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
+   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, même si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
 

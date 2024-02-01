@@ -9,8 +9,8 @@ lab:
 
 ## Dépendances du labo
 
-- Un abonnement Azure que vous utiliserez dans ce labo.
-- Un compte Microsoft ou un compte Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
+- Un abonnement Azure que vous allez utiliser dans ce labo.
+- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
 - Le labo terminé **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**
 
 ## Durée estimée
@@ -46,9 +46,9 @@ Les principales tâches de cet exercice sont les suivantes
 #### Tâche 1 : Créer un compte de stockage Azure
 
 1. À partir de votre ordinateur labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Dans le portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connect**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter** :
+1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -69,7 +69,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Redondance|**Stockage géo-redondant (GRS)**|
    |Permettre l’accès en lecture aux données en cas d’indisponibilité régionale|enabled|
 
-   >**Remarque** : Vérifiez que la longueur du nom du compte de stockage ne dépasse pas 15 caractères. Le nom va servir à créer un compte d’ordinateur dans le domaine Active Directory Domain Services (AD DS) intégré au locataire Microsoft Entra associé à l’abonnement Azure contenant le compte de stockage. Cela permet l’authentification basée sur AD DS lors de l’accès aux partages de fichiers hébergés dans ce compte de stockage.
+   >**Remarque** : Vérifiez que la longueur du nom du compte de stockage ne dépasse pas 15 caractères. Le nom va servir à créer un compte d’ordinateur dans le domaine Active Directory Domain Services (AD DS) intégré au locataire Microsoft Entra associé à l’abonnement Azure contenant le compte de stockage. Cela permet une authentification basée sur AD DS lors de l’accès aux partages de fichiers hébergés dans ce compte de stockage.
 
 1. Sous l’onglet **Informations de base** du volet **Créer un compte de stockage**, sélectionnez **Vérifier + créer**, attendez la fin du processus de validation, puis sélectionnez **Créer**.
 

@@ -7,7 +7,7 @@ lab:
 # Labo - Empaqueter des applications Azure Virtual Desktop (AD DS)
 # Manuel de labo de l’étudiant
 
-## Dépendances de labo
+## Dépendances du labo
 
 - Un abonnement Azure
 - Un compte Microsoft ou un compte Microsoft Entra disposant du rôle Administrateur général pour le locataire Microsoft Entra qui est associé à l’abonnement Azure, et disposant du rôle Propriétaire ou Contributeur dans l’abonnement Azure
@@ -313,7 +313,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Basculez vers l’ordinateur labo, dans le navigateur web affichant le portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
 1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connect**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter**:
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -352,9 +352,9 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la page **Connecter vos répertoires** dans la fenêtre **Microsoft Entra Connect**, sélectionnez **Suivant**.
 1. Dans la page **Filtrage du domaine** et de l’unité d’organisation dans la fenêtre **Microsoft Entra Connect**, vérifiez que l’option **Synchroniser les domaines sélectionnés et les unités d’organisation** est sélectionnée, développez le nœud **adatum.com**, cochez la case en regard de l’unité d’organisation **WVDInfra** (laissez les autres cases sélectionnées inchangées), et sélectionnez **Suivant**.
 1. Dans la page **Fonctionnalités facultatives** dans la fenêtre **Microsoft Entra Connect**, acceptez les paramètres par défaut, puis sélectionnez **Suivant**.
-1. Dans la page **Prêt à configurer** dans la fenêtre **Microsoft Entra Connect**, vérifiez que la case à cocher **Démarrer le processus de synchronisation lorsque la configuration se termine** est sélectionnée et sélectionnez **Configurer**.
+1. Dans la page **Prêt à configurer** de la fenêtre **Microsoft Entra Connect**, vérifiez que la case à cocher **Démarrer le processus de synchronisation lorsque la configuration se termine** est sélectionnée et sélectionnez **Configurer**.
 1. Passez en revue les informations de la page **Configuration complète**, puis sélectionnez **Quitter** pour fermer la fenêtre **Microsoft Entra Connect**.
-1. Dans la session Bastion pour **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Lorsque vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Administrateur général dans le locataire Microsoft Entra associé à l’abonnement Azure que vous utilisez dans ce labo.
+1. Dans la session Bastion pour **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Lorsque vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Administrateur général dans le locataire Microsoft Entra associé à l’abonnement Azure utilisé dans ce labo.
 1. Dans la session Bastion pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Azure Active Directory** pour accéder au locataire Microsoft Entra associé à l’abonnement Azure que vous utilisez pour ce labo.
 1. Dans le panneau Azure Active Directory, dans la barre de menus verticale située à gauche, dans la section **Gérer**, cliquez sur **groupes**. 
 1. Sur le panneau **groupes | Tous les groupes**, dans la liste des groupes, sélectionnez l’entrée **az140-hosts-42-p1**.
@@ -406,7 +406,7 @@ Les principales tâches de cet exercice sont les suivantes
    > **Remarque** : Les utilisateurs et les hôtes Azure Virtual Desktop ont besoin au moins d’un accès en lecture au partage de fichiers.
 
 1. Dans le panneau compte de stockage, dans le menu vertical situé à gauche, dans la section **Stockage de données**, sélectionnez **Partages de fichiers**, puis **+ Partage de fichiers**.
-1. Dans le panneau **Nouveau partage de fichiers**, spécifiez les paramètres suivants et sélectionnez **Créer** (laissez d’autres paramètres avec leurs valeurs par défaut) :
+1. Dans le panneau **Nouveau partage de fichiers**, spécifiez les paramètres suivants et sélectionnez **Créer** (laissez d’autres paramètres avec leurs valeurs par défaut) :
 
    |Paramètre|Valeur|
    |---|---|
@@ -503,25 +503,25 @@ Les principales tâches de cet exercice sont les suivantes
 
 Les principales tâches de cet exercice sont les suivantes
 
-1. Arrêter et libérer des machines virtuelles Azure approvisionnées et utilisées dans le labo
+1. Arrêter et libérer les machines virtuelles Azure approvisionnées et utilisées dans le labo
 
 >**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure approvisionnées et utilisées dans ce labo pour réduire les frais de calcul correspondants
 
 #### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées et utilisées dans le labo
 
-1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
-1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées et utilisées dans ce labo :
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées et utilisées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG'
    Get-AzVM -ResourceGroup 'az140-42-RG'
    ```
 
-1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées et utilisées dans ce labo :
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées et utilisées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Stop-AzVM -NoWait -Force
    Get-AzVM -ResourceGroup 'az140-42-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
+   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, même si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
