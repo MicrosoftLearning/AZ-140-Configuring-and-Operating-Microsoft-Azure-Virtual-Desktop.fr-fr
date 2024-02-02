@@ -7,7 +7,7 @@ lab:
 # Labo - Déployer et gérer des pools d’hôtes et des hôtes en utilisant PowerShell
 # Manuel de labo de l’étudiant
 
-## Éléments nécessaires pour le labo
+## Dépendances du labo
 
 - Un abonnement Azure que vous utiliserez dans ce labo.
 - Un compte Microsoft ou un compte Azure AD avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Azure AD associé à cet abonnement Azure.
@@ -48,9 +48,9 @@ Les principales tâches de cet exercice sont les suivantes
 #### Tâche 1 : Préparer le déploiement d’un pool d’hôtes Azure Virtual Desktop en utilisant PowerShell
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en utilisant les informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Dans le portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, puis dans le menu déroulant, sélectionnez **Bastion**. Sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Se connecter**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter** :
+1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -80,7 +80,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bastion sur **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Si vous y êtes invité, connectez-vous avec les informations d’identification Azure AD du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
 1. Dans la session Bastion sur **az140-dc-vm11**, dans le portail Azure, utilisez la zone de texte **Rechercher dans les ressources, services et documents** en haut de la page pour rechercher et accéder à **Réseaux virtuels**, puis dans le panneau **Réseaux virtuels**, sélectionnez **az140-adds-vnet11**. 
-1. Dans le panneau **az140-adds-vnet11**, sélectionnez **Sous-réseaux**. Dans le panneau **Sous-réseaux**, sélectionnez **+ Sous-réseau**, puis dans le panneau **Ajouter un sous-réseau**, spécifiez les paramètres suivants (laissez tous les autres paramètres avec leurs valeurs par défaut) et cliquez sur **Enregistrer** :
+1. Dans le panneau **az140-add-vnet11**, sélectionnez **Sous-réseaux**, dans le panneau **Sous-réseaux**, sélectionnez **+ Sous-réseau**, dans le panneau **Ajouter un sous-réseau**, spécifiez les paramètres suivants (laissez tous les autres paramètres avec leurs valeurs par défaut) et cliquez sur **Enregistrer**:
 
    |Paramètre|Valeur|
    |---|---|
@@ -89,9 +89,9 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bastion sur **az140-dc-vm11**, dans le portail Azure, utilisez la zone de texte **Rechercher dans les ressources, services et documents** en haut de la page pour rechercher et accéder à **Groupes de sécurité réseau**, puis dans le panneau **Groupes de sécurité réseau**, sélectionnez le groupe de sécurité dans le groupe de ressources **az140-11-RG**.
 1. Dans le panneau du groupe de sécurité réseau, dans le menu vertical à gauche, dans la section **Paramètres**, cliquez sur **Propriétés**.
-1. Dans le panneau **Propriétés**, cliquez sur l’icône **Copier dans le Presse-papiers** à droite de la zone de texte **ID de ressource**. 
+1. Dans le panneau **Propriétés**, cliquez sur l’icône **Copier dans le Presse-papiers** à droite de la zone de texte **ID de la ressource**. 
 
-   > **Remarque** : La valeur devrait ressembler au format `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`, même si l’ID d’abonnement diffère. Enregistrez-la parce que vous en aurez besoin dans la tâche suivante.
+   > **Remarque** : La valeur devrait ressembler au format `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`, même si l’Identifiant de l’abonnement diffère. Enregistrez-la parce que vous en aurez besoin dans la tâche suivante.
 
 #### Tâche 2 : Créer un pool d’hôtes Azure Virtual Desktop en utilisant PowerShell
 
@@ -298,23 +298,23 @@ Les principales tâches de cet exercice sont les suivantes
 
 Les principales tâches de cet exercice sont les suivantes
 
-1. Arrêter et libérer les machines virtuelles Azure provisionnées dans le labo
+1. Arrêter et libérer des machines virtuelles Azure approvisionnées dans le labo
 
->**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure provisionnées dans ce labo pour réduire les frais de calcul correspondants
+>**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure approvisionnées dans ce labo pour réduire les frais de calcul correspondants
 
-#### Tâche 1 : Libérer les machines virtuelles Azure provisionnées dans le labo
+#### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées dans le labo
 
-1. Basculez sur l’ordinateur de labo, puis dans la fenêtre de navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour lister toutes les machines virtuelles Azure créées dans ce labo :
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
+1. Dans la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-24-RG'
    ```
 
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées dans ce labo :
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-24-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Remarque** : La commande s’exécute de manière asynchrone (comme l’indique le paramètre -NoWait), donc même si vous pouvez exécuter une autre commande PowerShell dans la même session PowerShell immédiatement après, il faut quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
+   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, même si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.

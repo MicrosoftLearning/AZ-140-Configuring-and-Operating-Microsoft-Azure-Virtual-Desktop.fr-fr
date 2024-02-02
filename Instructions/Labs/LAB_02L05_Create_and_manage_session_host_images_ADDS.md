@@ -7,10 +7,10 @@ lab:
 # Labo - Créer et gérer des images d’hôte de session (AD DS)
 # Manuel de labo de l’étudiant
 
-## Éléments nécessaires pour le labo
+## Dépendances du labo
 
-- Un abonnement Azure que vous utiliserez dans ce labo.
-- Un compte Microsoft ou un compte Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
+- Un abonnement Azure que vous allez utiliser dans ce labo.
+- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
 - Le labo terminé **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**
 
 ## Durée estimée
@@ -77,7 +77,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 > **Remarque** : Vérifiez que votre navigateur dispose de la fonctionnalité de fenêtre contextuelle activée.
 
-1. Dans la fenêtre du navigateur affichant le portail Azure, ouvrez un autre onglet, puis accédez au portail Azure à partir de cet onglet.
+1. Dans la fenêtre du navigateur affichant le Portail Azure, ouvrez un autre onglet, et, dans l’onglet du navigateur, accédez au Portail Azure.
 1. Dans le portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils juste à droite de la zone de texte de recherche.
 1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour ajouter un sous-réseau nommé **AzureBastionSubnet** au réseau virtuel nommé **az140-25-vnet** que vous avez créé précédemment dans cet exercice :
 
@@ -340,23 +340,23 @@ Les principales tâches de cet exercice sont les suivantes
 
 Les principales tâches de cet exercice sont les suivantes
 
-1. Arrêter et libérer les machines virtuelles Azure provisionnées dans le labo
+1. Arrêter et libérer des machines virtuelles Azure approvisionnées dans le labo
 
->**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure provisionnées dans ce labo pour réduire les frais de calcul correspondants
+>**Remarque** : Dans cet exercice, vous allez libérer les machines virtuelles Azure approvisionnées dans ce labo pour réduire les frais de calcul correspondants
 
-#### Tâche 1 : Libérer les machines virtuelles Azure provisionnées dans le labo
+#### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées dans le labo
 
-1. Basculez sur l’ordinateur de labo, puis dans la fenêtre de navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour lister toutes les machines virtuelles Azure créées dans ce labo :
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
+1. Dans la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-25-RG'
    ```
 
-1. Dans la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées dans ce labo :
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour arrêter et libérer toutes les machines virtuelles Azure que vous avez créées dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-25-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Remarque** : La commande s’exécute de manière asynchrone (comme l’indique le paramètre -NoWait), donc même si vous pouvez exécuter une autre commande PowerShell dans la même session PowerShell immédiatement après, il faut quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
+   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, même si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
