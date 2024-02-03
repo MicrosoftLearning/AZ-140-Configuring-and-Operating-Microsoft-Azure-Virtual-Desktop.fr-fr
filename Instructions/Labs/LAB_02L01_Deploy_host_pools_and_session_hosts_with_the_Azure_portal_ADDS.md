@@ -7,10 +7,10 @@ lab:
 # Labo - Déployer des pools d’hôtes et des hôtes de session à l’aide du portail Azure (AD DS)
 # Manuel de labo de l’étudiant
 
-## Dépendances de labo
+## Dépendances du labo
 
-- Un abonnement Azure que vous utiliserez dans ce labo.
-- Un compte Microsoft ou un compte Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous utiliserez dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
+- Un abonnement Azure que vous allez utiliser dans ce labo.
+- Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
 - Le labo terminé **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**
 
 ## Durée estimée
@@ -47,9 +47,9 @@ Les principales tâches de cet exercice sont les suivantes
 #### Tâche 1 : Préparer le domaine AD DS et l’abonnement Azure pour le déploiement d’un pool d’hôtes Azure Virtual Desktop
 
 1. À partir de votre ordinateur labo, démarrez un navigateur web, accédez au [portail Azure]( ), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Dans le portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles** , sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connect**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter**:
+1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -115,7 +115,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Paramètre|Valeur|
    |---|---|
    |Ajouter des machines virtuelles Azure|**Oui**|
-   |Resource group|**Valeur par défaut identique au pool d’hôtes**|
+   |Resource group|**Par défaut, identique à celui du pool d’hôtes**|
    |Préfixe de nom|**az140-21-p1**|
    |Emplacement des machines virtuelles|nom de la région Azure dans laquelle vous avez déployé des ressources dans le premier exercice de ce labo|
    |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
@@ -134,12 +134,12 @@ Les principales tâches de cet exercice sont les suivantes
    |Mot de passe|**Pa55w.rd1234**|
    |Spécifier un domaine ou une unité|**Oui**|
    | Domaine à rejoindre|**adatum.com**|
-   |Chemin d’accès de l’unité d’organisation|**OU=WVDInfra,DC=adatum,DC=com**|
+   |Chemin de l’unité d’organisation|**OU=WVDInfra,DC=adatum,DC=com**|
    |Nom d'utilisateur|**Étudiant**|
    |Mot de passe|**Pa55w.rd1234**|
    |Confirmer le mot de passe|**Pa55w.rd1234**|
 
-1. Sous l’onglet **espace de travail** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer**:
+1. Sous l’onglet **Espace de travail** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -177,7 +177,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Mot de passe|**Pa55w.rd1234**|
    |Spécifier un domaine ou une unité|**Oui**|
    | Domaine à rejoindre|**adatum.com**|
-   |Chemin d’accès de l’unité d’organisation|**OU=WVDInfra,DC=adatum,DC=com**|   
+   |Chemin de l’unité d’organisation|**OU=WVDInfra,DC=adatum,DC=com**|   
    |Nom d’utilisateur du compte Administrateur de machine virtuelle|**Étudiant**|
    |Mot clé du compte Administrateur de machine virtuelle|**Pa55w.rd1234**|
 
@@ -206,7 +206,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom du groupe d'applications|**az140-21-hp1-Office365-RAG**|
 
 1. Sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer**:
+1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -216,7 +216,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Demander la ligne de commande|**Aucun**|
 
 1. De retour sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer**:
+1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -226,7 +226,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Demander la ligne de commande|**Aucun**|
 
 1. De retour sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer**:
+1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -239,7 +239,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
 1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-remote-app**, puis cliquez sur **Sélectionner**.
 1. De retour sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
-1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer**:
+1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -253,7 +253,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bureau à distance pour **az140-dc-vm11**, recherchez et sélectionnez **Azure Virtual Desktop** et, dans le panneau **Azure Virtual Desktop**, sélectionnez **groupes d’applications**.
 1. Dans le panneau **groupes d’applications \| Azure Virtual Desktop**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >**:
+1. Sous l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -264,7 +264,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom du groupe d'applications|**az140-21-hp1-Utilities-RAG**|
 
 1. Sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer**:
+1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -281,7 +281,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
 1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-remote-app** et **az140-wvd-admins**, puis cliquez sur **Sélectionner**.
 1. De retour sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
-1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer**:
+1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -293,7 +293,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bureau à distance pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop** et, dans le panneau **Azure Virtual Desktop**, sélectionnez **Espaces de travail**.
 1. Dans le panneau **Espaces de travail \| Azure Virtual Desktop**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un espace de travail**, spécifiez les paramètres suivants et sélectionnez **Suivant : Groupes d’applications >**:
+1. Sous l’onglet **Informations de base** du panneau **Créer un espace de travail**, spécifiez les paramètres suivants et sélectionnez **Suivant : Groupes d’applications >** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -312,15 +312,15 @@ Les principales tâches de cet exercice sont les suivantes
 1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, sélectionnez **+ Inscrire des groupes d’applications**.
 1. Dans le panneau **Ajouter des groupes d’applications**, Sélectionnez le signe plus en regard du **az140-21-hp1-DAG**, **az140-21-hp1-Office365-RAG**, et des entrées **az140-21-hp1-Utilities-RAG**, puis cliquez sur **Sélectionner**. 
 1. De retour dans l’onglet **Groupes d’applications** du panneau **Créer un espace de travail**, sélectionnez **Vérifier + créer**.
-1. Dans l’onglet **Vérifier + créer** du panneau **Créer un espace de travail**, sélectionnez **Créer**.
+1. Sous l’onglet **Vérifier + créer** du panneau **Créer un espace de travail**, sélectionnez **Créer**.
 
 ### Exercice 2 : Valider l’environnement Azure Virtual Desktop
   
 Les principales tâches de cet exercice sont les suivantes
 
-1. Installer le client Microsoft Remote Desktop (MSRDC) sur un ordinateur Windows 10
+1. Installer le client Bureau à distance Microsoft sur un ordinateur Windows 10
 1. S’abonner à un espace de travail Azure Virtual Desktop
-1. Tester des applications Azure Virtual Desktop
+1. Tester les applications Azure Virtual Desktop
 
 #### Tâche 1 : Installer le client Microsoft Remote Desktop (MSRDC) sur un ordinateur Windows 10
 
@@ -339,7 +339,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Basculez vers votre ordinateur labo, à partir de l’ordinateur labo, dans la fenêtre du navigateur affichant le portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez l’entrée **az140-cl-vm11**.
 1. Dans le panneau **az140-cl-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-cl-vm11\| Connecter**, sélectionnez **Utiliser bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter**:
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
@@ -386,7 +386,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 #### Tâche 1 : Libérer des machines virtuelles Azure approvisionnées dans le labo
 
-1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le portail Azure, ouvrez la session shell **PowerShell** dans le volet **Cloud Shell**.
+1. Basculez vers l’ordinateur labo et, dans la fenêtre du navigateur web affichant le Portail Azure, ouvrez la session de l’interpréteur de commandes **PowerShell** dans le volet **Cloud Shell**.
 1. Dans la session PowerShell dans le volet Cloud Shell, exécutez la commande suivante pour répertorier toutes les machines virtuelles Azure créées dans ce labo :
 
    ```powershell
@@ -399,4 +399,4 @@ Les principales tâches de cet exercice sont les suivantes
    Get-AzVM -ResourceGroup 'az140-21-RG' | Stop-AzVM -NoWait -Force
    ```
 
-   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
+   >**Remarque** : La commande s’exécute de manière asynchrone (telle que déterminée par le paramètre -NoWait). Par conséquent, même si vous pourrez exécuter une autre commande PowerShell immédiatement après la même session PowerShell, il faudra quelques minutes avant que les machines virtuelles Azure ne soient réellement arrêtées et libérées.
