@@ -144,7 +144,7 @@ Les principales tâches de cet exercice sont les suivantes
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, basculez vers la fenêtre Microsoft Edge affichant le portail Azure, dans le panneau affichant le compte de stockage, sélectionnez **Partages de fichiers** et vérifiez que le paramètre **Active Directory** est **Configuré**.
+1. Dans la session Bureau à distance pour **az140-dc-vm11**, basculez vers la fenêtre Microsoft Edge affichant le portail Azure, dans le panneau affichant le compte de stockage, sélectionnez **Partages de fichiers** et vérifiez que le paramètre **Accès basé sur l’identité** est **Configuré**.
 
    >**Remarque** : Vous devrez peut-être actualiser la page du navigateur pour que la modification soit reflétée dans le portail Azure.
 
