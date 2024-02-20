@@ -295,12 +295,14 @@ Les principales tâches de cet exercice sont les suivantes
    |Ajouter des machines virtuelles Azure|**Oui**|
    |Resource group|**Par défaut, identique à celui du pool d’hôtes**|
    |Préfixe de nom|**az140-25-p4**|
+   |Type de machine virtuelle|**Machine virtuelle Azure**|
    |Emplacement des machines virtuelles|nom de la région Azure dans laquelle vous avez déployé des ressources dans le premier exercice de ce labo|
    |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
+   |Type de sécurité|**Standard**|
    
 1. Sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, directement sous la liste déroulante **Image**, cliquez sur le lien **Voir toutes les images**.
 1. Dans le panneau **Sélectionner une image**, sous **Autres éléments**, cliquez sur **Images partagées**, puis dans la liste des images partagées, sélectionnez **az140-25-host-image**. 
-1. De retour sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Espace de travail >**
+1. De retour sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Espace de travail >** :
 
    |Paramètre|Valeur|
    |---|---|

@@ -264,7 +264,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom du groupe d'applications|**az140-21-hp1-Utilities-RAG**|
 
 1. Sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
+1. Dans le panneau **Ajouter une application**, utilisez les onglets **Informations de base** et **Index** pour spécifier les paramètres suivants, puis sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
