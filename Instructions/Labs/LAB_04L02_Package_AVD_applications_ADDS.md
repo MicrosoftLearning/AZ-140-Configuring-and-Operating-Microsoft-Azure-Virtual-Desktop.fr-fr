@@ -38,6 +38,8 @@ Vous devez combiner et déployer des applications Azure Virtual Desktop dans un 
 
 ## Instructions
 
+>**Important** : Microsoft a renommé **Azure Active Directory** (**Azure AD**) **Microsoft Entra ID**. Pour plus d’informations sur cette modification, consultez [Nouveau nom pour Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Cette modification étant en cours d’application, vous rencontrerez peut-être encore des cas d’incohérences entre l’instruction du labo et les éléments de l’interface à mesure que vous parcourez chaque exercice. Gardez cela à l’esprit (en particulier, dans ce labo, où **Microsoft Entra Connect** désigne le nouveau nom d’**Azure Active Directory Connect**).
+
 ### Exercice 1 : Préparer et créer des packages d’applications MSIX
 
 Les principales tâches de cet exercice sont les suivantes
@@ -464,18 +466,17 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans le **panneau groupes d’applications \|Azure Virtual Desktop**, sélectionnez l’entrée de groupe d’applications **az140-21-hp1-Utilities-RAG**.
 1. Dans le panneau **az140-21-hp1-Utilities-RAG**, dans le menu vertical situé à gauche, dans la section **Gérer**, sélectionnez **Applications**. 
 1. Dans le panneau **az140-21-hp1-Utilities-RAG \| Applications**, cliquez sur **+ Ajouter**.
-1. Dans le panneau **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Enregistrer**:
+1. Dans le panneau **Ajouter une application**, dans les onglets **Informations de base** et **Icône**, spécifiez les paramètres suivants et sélectionnez **Enregistrer** :
 
    |Paramètre|Valeur|
    |---|---|
-   |Source de l’application|**package MSIX**|
-   |Package MSIX|nom représentant le package inclus dans l’image|
-   |Application MSIX|**XMLNOTEPAD**|
-   |Nom de l’application|**bloc-notes XML**|
+   |Source de l’application|**Attachement d’application**|
+   |Package|nom représentant le package inclus dans l’image|
+   |Application|**XMLNOTEPAD**|
+   |Identificateur d’application|**bloc-notes XML**|
    |Nom d’affichage|**bloc-notes XML**|
    |Description|**bloc-notes XML**|
-   |Chemin d’accès à l’icône|**C :\\Program Files\\WindowsApps\\XmlNotepad_2.8.0.0_x64___4vm7ty4fw38e8\\VFS\\ProgramFilesX86\\LovettSoftware\\XmlNotepad\\XmlNotepad.exe**|
-   |Index d’icône|**0**|
+   |Source d’icônes|**Par défaut**|
 
 1. Revenez au panneau **groupes d’applications \| Azure Virtual Desktop**, puis sélectionnez l’entrée de groupe d’applications **az140-21-hp1-DAG**.
 1. Dans le panneau **az140-21-hp1-DAG**, dans le menu vertical situé à gauche, dans la section **Gérer**, sélectionnez **Applications**. 
