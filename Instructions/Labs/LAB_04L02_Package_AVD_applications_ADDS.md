@@ -38,7 +38,7 @@ Vous devez combiner et déployer des applications Azure Virtual Desktop dans un 
 
 ## Instructions
 
->**Important** : Microsoft a renommé **Azure Active Directory** (**Azure AD**) **Microsoft Entra ID**. Pour plus d’informations sur cette modification, consultez [Nouveau nom pour Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Cette modification étant en cours d’application, vous rencontrerez peut-être encore des cas d’incohérences entre l’instruction du labo et les éléments de l’interface à mesure que vous parcourez chaque exercice. Gardez cela à l’esprit (en particulier, dans ce labo, où **Microsoft Entra Connect** désigne le nouveau nom d’**Azure Active Directory Connect**).
+>**Important** : Microsoft a renommé **Azure Active Directory** (**Azure AD**) **Microsoft Entra ID**. Pour plus d’informations sur cette modification, consultez [Le nouveau nom d’Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Puisque cette modification est encore en cours d’application, vous rencontrerez peut-être encore des cas d’incompatibilité entre l’instruction du labo et les éléments de l’interface à mesure que vous parcourez chaque exercice. Gardez cela à l’esprit (en particulier, dans ce labo, où **Microsoft Entra Connect** désigne le nouveau nom d’**Azure Active Directory Connect**).
 
 ### Exercice 1 : Préparer et créer des packages d’applications MSIX
 
