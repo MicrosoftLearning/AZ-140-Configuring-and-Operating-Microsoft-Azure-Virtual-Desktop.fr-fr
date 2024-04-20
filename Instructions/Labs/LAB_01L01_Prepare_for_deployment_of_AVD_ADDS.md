@@ -1,7 +1,7 @@
 ---
 lab:
   title: "Labo : Préparer le déploiement d’Azure Virtual Desktop (AD\_DS)"
-  module: 'Module 1: Plan a AVD Architecture'
+  module: 'Module 1: Plan an AVD Architecture'
 ---
 
 # Labo : Préparer le déploiement d’Azure Virtual Desktop (AD DS)
