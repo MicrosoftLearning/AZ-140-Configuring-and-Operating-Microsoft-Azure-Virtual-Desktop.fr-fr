@@ -111,8 +111,8 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [Portail Azure](https://portal.azure.com), puis connectez-vous en fournissant les informations d’identification d’un compte d’utilisateur disposant du rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo et du rôle Administrateur général dans le tenant Microsoft Entra associé à l’abonnement Azure.
 1. Dans le navigateur web affichant le Portail Azure, accédez au panneau **Vue d’ensemble** du tenant Microsoft Entra et, dans la section **Gérer** du menu vertical à gauche, cliquez sur **Propriétés**.
-1. En bas du panneau **Propriétés** de votre tenant Microsoft Entra, sélectionnez le lien **Gérer les paramètres de sécurité par défaut**.
-1. Dans le panneau **Activer les paramètres de sécurité par défaut**, si nécessaire, sélectionnez **Non**, puis la case **Mon organisation utilise l’accès conditionnel**, enfin **Enregistrer**.
+1. En bas du panneau **Propriétés** de votre locataire Microsoft Entra, sélectionnez le lien **Gérer la sécurité par défaut** .
+1. Dans le panneau **Activer la sécurité par défaut**, si nécessaire, sélectionnez **Non**, puis sélectionnez la case **Mon organisation utilise l’accès conditionnel**, puis sélectionnez **Enregistrer**.
 1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
 1. Lorsque vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **PowerShell**. 
 
