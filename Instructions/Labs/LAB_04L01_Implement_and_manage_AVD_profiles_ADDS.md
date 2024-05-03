@@ -11,8 +11,8 @@ lab:
 
 - Un abonnement Azure que vous allez utiliser dans ce labo.
 - Un compte Microsoft ou Microsoft Entra avec le rôle Propriétaire ou Contributeur dans l’abonnement Azure que vous allez utiliser dans ce labo et avec le rôle Administrateur général dans le locataire Microsoft Entra associé à cet abonnement Azure.
-- Le labo **Préparer le déploiement d’Azure Virtual Desktop (AD DS)** terminé
-- Le labo **Implémenter et gérer le stockage pour WVD (AD DS)** terminé
+- Le labo terminé **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**
+- Le labo **Implémenter et gérer le stockage pour AVD (AD DS)** terminé
 
 ## Durée estimée
 
@@ -40,24 +40,12 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Configurer des profils basés sur FSLogix sur des machines virtuelles de l’hôte de la session Azure Virtual Desktop
 1. Tester des profils basés sur FSLogix avec Azure Virtual Desktop
-1. Supprimer les ressources Azure déployées dans le labo
 
 #### Tâche 1 : Configurer des profils basés sur FSLogix sur des machines virtuelles de l’hôte de la session Azure Virtual Desktop
 
-1. À partir de votre ordinateur labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
-1. Dans le portail Azure, recherchez et sélectionnez **Machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-21-p1-0**.
-1. Dans le panneau **az140-21-p1-0**, sélectionnez **Démarrer** et attendez que l’état de la machine virtuelle devienne **Exécution**.
-1. Dans le panneau **az140-21-p1-0**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-21-p1-0 \| Connecter**, sélectionnez **Utiliser Bastion**.
-1. À l’invite, connectez-vous avec les informations d’identification suivantes :
-
-   |Paramètre|Valeur|
-   |---|---|
-   |Nom d’utilisateur|**student@adatum.com**|
-   |Mot de passe|**Pa55w.rd1234**|
-
-1. Dans la session Bastion vers **az140-21-p1-0**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Si vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
-1. Dans la session Bastion vers **az140-21-p1-0**, dans la fenêtre Microsoft Edge affichant le portail Azure, ouvrez une session PowerShell dans le volet Cloud Shell. 
-1. À partir de la session PowerShell dans le volet **Cloud Shell**, exécutez la commande suivante pour démarrer les machines virtuelles d’hôte de session Azure Virtual Desktop que vous utiliserez dans ce labo :
+1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [Portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
+1. Dans le Portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils directement à droite de la zone de texte de recherche.
+1. Dans le volet **Cloud Shell**, exécutez la commande suivante pour démarrer les machines virtuelles d’hôte de session Azure Virtual Desktop que vous utiliserez dans ce labo :
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Start-AzVM
@@ -65,37 +53,36 @@ Les principales tâches de cet exercice sont les suivantes
 
    >**Remarque** : Attendez que les machines virtuelles Azure s’exécutent avant de passer à l’étape suivante.
 
-1. À partir de la session PowerShell dans le volet **Cloud Shell**, exécutez la commande suivante pour activer la communication à distance PowerShell sur les hôtes de session.
+1. Dans le volet **Cloud Shell**, exécutez la commande suivante pour activer la communication à distance PowerShell sur les hôtes de session.
 
    ```powershell
    Get-AzVM -ResourceGroup 'az140-21-RG' | Enable-AzVMPSRemoting
    ```
-   
+
 1. Fermer Cloud Shell
+1. Dans le portail Azure, recherchez et sélectionnez **Machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-21-p1-0**.
+1. Dans le panneau **az140-21-p1-0**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
+1. À l’invite, connectez-vous avec les informations d’identification suivantes :
+
+   |Paramètre|Valeur|
+   |---|---|
+   |Nom d’utilisateur|**student@adatum.com**|
+   |Mot de passe|**Pa55w.rd1234**|
+
 1. Dans la session Bastion vers **az140-21-p1-0**, démarrez Microsoft Edge, accédez à la [page de téléchargement de FSLogix](https://aka.ms/fslogix_download), téléchargez les fichiers binaires d’installation compressés de FSLogix, extrayez-les dans le dossier **C:\\Allfiles\\Labs\\04** (créez-le si nécessaire), accédez au sous-dossier **x64\\Release**, double-cliquez sur le fichier **FSLogixAppsSetup.exe** pour lancer l’Assistant **Installation des applications Microsoft FSLogix** et suivez les étapes d’installation avec les paramètres par défaut.
 
    > **Remarque** : L’installation de FXLogic n’est pas nécessaire si l’image l’inclut déjà.
 
-1. Dans la session Bastion vers **az140-21-p1-0**, démarrez **Windows PowerShell ISE** en tant qu’administrateur et, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour installer la dernière version du module PowerShellGet (sélectionnez **Oui** lorsque vous êtes invité à confirmer) :
+1. Dans la session Bastion sur **az140-21-p1-0**, démarrez **Windows PowerShell ISE** en tant qu’administrateur.
+1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour installer la dernière version du module Az PowerShell (entrez **Y** lorsque vous y êtes invité à installer et importer NuGet) :
 
    ```powershell
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   Install-Module -Name PowerShellGet -Force -SkipPublisherCheck
+   Install-Module -Name Az -AllowClobber -SkipPublisherCheck -Force
    ```
 
-1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour installer la dernière version du module Az PowerShell (sélectionnez **Oui pour tout** lorsque vous êtes invité à confirmer) :
+   > **Remarque** : Vous devrez peut-être attendre trois à cinq minutes avant qu’une sortie de l’installation du module Az s’affiche. Vous devrez peut-être également attendre cinq minutes **après** l’arrêt de la sortie. Ce comportement est normal.
 
-   ```powershell
-   Install-Module -Name Az -AllowClobber -SkipPublisherCheck
-   ```
-
-1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour modifier la stratégie d’exécution :
-
-   ```powershell
-   Set-ExecutionPolicy RemoteSigned -Force
-   ```
-
-1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
+1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
 
    ```powershell
    Connect-AzAccount
@@ -106,7 +93,7 @@ Les principales tâches de cet exercice sont les suivantes
 
    ```powershell
    $resourceGroupName = 'az140-22-RG'
-   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName   
+   $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
 1. Dans la session Bastion vers **az140-21-p1-0**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour configurer les paramètres du registre de profils :
@@ -138,6 +125,8 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Pour offrir une expérience utilisateur cohérente, vous devez installer et configurer des composants FSLogix sur tous les hôtes de session Azure Virtual Desktop. Vous effectuerez cette tâche sans assistance sur les autres hôtes de session dans notre environnement lab. 
 
+   > **Remarque** : L’étape suivante n’est pas nécessaire si FSLogix est déjà installé sur les hôtes de session.
+
 1. Dans la session Bastion vers **az140-21-p1-0**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour installer les composants FSLogix sur les hôtes de session **az140-21-p1-1** et **az140-21-p1-2** :
 
    ```powershell
@@ -157,6 +146,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la session Bastion vers **az140-21-p1-0**, à partir du volet de script **Administrateur : Volet de script Windows PowerShell ISE**, exécutez la commande suivante pour configurer les paramètres de registre de profils sur les hôtes de session **az140-21-p1-1** et **az140-21-p1-1** :
 
    ```powershell
+   $servers = 'az140-21-p1-1', 'az140-21-p1-2'
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
@@ -179,10 +169,13 @@ Les principales tâches de cet exercice sont les suivantes
    Get-CimInstance -ComputerName $servers -Class Win32_UserProfile | Where-Object { $_.LocalPath.split('\')[-1] -eq $userName } | Remove-CimInstance
    ```
 
+1. Dans la session Bastion à **az140-21-p1-0**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter** puis, dans le menu en cascade, sélectionnez **Se déconnecter**.
+1. Dans la fenêtre **Déconnectée**, sélectionnez **Fermer**.
+
 #### Tâche 2 : Tester des profils basés sur FSLogix avec Azure Virtual Desktop
 
 1. Basculez vers votre ordinateur labo, à partir de l’ordinateur labo, dans la fenêtre du navigateur affichant le portail Azure, recherchez et sélectionnez **Machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez l’entrée **az140-cl-vm11**.
-1. Dans le panneau **az140-cl-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-cl-vm11\| Connecter**, sélectionnez **Utiliser bastion**.
+1. Dans le panneau **az140-cl-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
@@ -194,24 +187,25 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la session Bastion vers **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, sélectionnez **S’abonner** et, quand vous y êtes invité, connectez-vous avec les informations d’identification **aduser1**.
 
    >**Remarque** : si vous n’êtes pas invité à vous abonner, vous devrez peut-être vous résilier un abonnement précédent.
-3. dans la liste des applications, double-cliquez sur **Invite de commandes**, lorsque vous y êtes invité, indiquez le mot de passe du compte **aduser1** et vérifiez qu’une fenêtre **Invite de commandes** s’ouvre correctement.
-4. Dans le coin supérieur gauche de la fenêtre **Invite de commandes**, cliquez avec le bouton droit sur l’icône **Invite de commandes** et, dans le menu déroulant, sélectionnez **Propriétés**.
-5. Dans la boîte de dialogue **Propriétés de l’invite de commandes**, sélectionnez l’onglet **Police**, modifiez la taille et les paramètres de police, puis sélectionnez **OK**.
-6. Dans la fenêtre **Invite de commandes**, tapez **logoff** et appuyez sur la touche **Entrée** pour vous déconnecter de la session Bureau à distance.
-7. Dans la session Bastion vers **az140-cl-vm11**, dans la fenêtre cliente **Bureau à distance**, dans la liste des applications, double-cliquez sur **SessionDesktop** sous az140-21-ws1 et vérifiez qu’il lance une session Bureau à distance. 
-8. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Exécuter**, dans la boîte de dialogue **Exécuter**, dans la zone de texte **Ouvrir**, tapez **cmd** et sélectionnez **OK** pour lancer une fenêtre **Invite de commandes** :
-9. Vérifiez que les paramètres de la fenêtre **Invite de commandes** correspondent à ceux que vous avez configurés précédemment dans cette tâche.
-10. Dans la session **SessionDesktop**, réduisez toutes les fenêtres, cliquez avec le bouton droit sur le bureau, dans le menu contextuel, sélectionnez **Nouveau** et, dans le menu en cascade, sélectionnez **Raccourci**. 
-11. Sur la page **De quel élément souhaitez-vous créer un raccourci ?** de l’Assistant **Créer un raccourci**, dans la zone de texte **Tapez l’emplacement de la zone de texte de l’élément**, tapez **Bloc-notes** et sélectionnez **Suivant**.
-12. Sur la page **Quel nom souhaitez-vous donner au raccourci** de l’assistant **Créer un raccourci**, dans la zone de texte **Tapez un nom pour ce raccourci**, tapez **Bloc-notes** et sélectionnez **Terminer**.
-13. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter**, puis, dans le menu en cascade, sélectionnez **Se déconnecter**.
-14. Retournez à la session Bastion vers **az140-cl-vm11**, dans la fenêtre de client **Bureau à distance**, dans la liste des applications, puis double-cliquez sur **SessionDesktop** pour démarrer une nouvelle session Bureau à distance. 
-15. Dans la session **SessionDesktop**, vérifiez que le raccourci **Bloc-notes** s’affiche sur le bureau.
-16. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter**, puis, dans le menu en cascade, sélectionnez **Se déconnecter**.
-17. Basculez vers votre ordinateur labo et, dans la fenêtre Microsoft Edge affichant le portail Azure, accédez au panneau **Comptes de stockage** et sélectionnez l’entrée représentant le compte de stockage que vous avez créé dans l’exercice précédent.
-18. Dans le panneau Compte de stockage, dans la section **Services de fichiers**, sélectionnez **Partages de fichiers**, puis, dans la liste des partages de fichiers, sélectionnez **az140-22-profiles**. 
-19. Dans le panneau **az140-22-profiles**, sélectionnez **Parcourir** et vérifiez que son contenu inclut un dossier qui se compose d’une combinaison de l’identificateur de sécurité (SID) du compte **ADATUM\\aduser1** suivi du suffixe **_aduser1**.
-20. Sélectionnez le dossier que vous avez identifié à l’étape précédente et notez qu’il contient un fichier unique nommé **Profile_aduser1.vhd**.
+
+1. dans la liste des applications, double-cliquez sur **Invite de commandes**, lorsque vous y êtes invité, indiquez le mot de passe du compte **aduser1** et vérifiez qu’une fenêtre **Invite de commandes** s’ouvre correctement.
+1. Dans le coin supérieur gauche de la fenêtre **Invite de commandes**, cliquez avec le bouton droit sur l’icône **Invite de commandes** et, dans le menu déroulant, sélectionnez **Propriétés**.
+1. Dans la boîte de dialogue **Propriétés de l’invite de commandes**, sélectionnez l’onglet **Police**, modifiez la taille et les paramètres de police, puis sélectionnez **OK**.
+1. Dans la fenêtre **Invite de commandes**, tapez **logoff** et appuyez sur la touche **Entrée** pour vous déconnecter de la session Bureau à distance.
+1. Dans la session Bastion vers **az140-cl-vm11**, dans la fenêtre cliente **Bureau à distance**, dans la liste des applications, double-cliquez sur **SessionDesktop** sous az140-21-ws1 et vérifiez qu’il lance une session Bureau à distance. 
+1. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Exécuter**, dans la boîte de dialogue **Exécuter**, dans la zone de texte **Ouvrir**, tapez **cmd** et sélectionnez **OK** pour lancer une fenêtre **Invite de commandes** :
+1. Vérifiez que les paramètres de la fenêtre **Invite de commandes** correspondent à ceux que vous avez configurés précédemment dans cette tâche.
+1. Dans la session **SessionDesktop**, réduisez toutes les fenêtres, cliquez avec le bouton droit sur le bureau, dans le menu contextuel, sélectionnez **Nouveau** et, dans le menu en cascade, sélectionnez **Raccourci**. 
+1. Sur la page **De quel élément souhaitez-vous créer un raccourci ?** de l’Assistant **Créer un raccourci**, dans la zone de texte **Tapez l’emplacement de la zone de texte de l’élément**, tapez **Bloc-notes** et sélectionnez **Suivant**.
+1. Sur la page **Quel nom souhaitez-vous donner au raccourci** de l’assistant **Créer un raccourci**, dans la zone de texte **Tapez un nom pour ce raccourci**, tapez **Bloc-notes** et sélectionnez **Terminer**.
+1. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter**, puis, dans le menu en cascade, sélectionnez **Se déconnecter**.
+1. Retournez à la session Bastion vers **az140-cl-vm11**, dans la fenêtre de client **Bureau à distance**, dans la liste des applications, puis double-cliquez sur **SessionDesktop** pour démarrer une nouvelle session Bureau à distance. 
+1. Dans la session **SessionDesktop**, vérifiez que le raccourci **Bloc-notes** s’affiche sur le bureau.
+1. Dans la session **SessionDesktop**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter**, puis, dans le menu en cascade, sélectionnez **Se déconnecter**.
+1. Basculez vers votre ordinateur labo et, dans la fenêtre Microsoft Edge affichant le portail Azure, accédez au panneau **Comptes de stockage** et sélectionnez l’entrée représentant le compte de stockage que vous avez créé dans l’exercice précédent.
+1. Dans le panneau Compte de stockage, dans la section **Services de fichiers**, sélectionnez **Partages de fichiers**, puis, dans la liste des partages de fichiers, sélectionnez **az140-22-profiles**. 
+1. Dans le panneau **az140-22-profiles**, sélectionnez **Parcourir** et vérifiez que son contenu inclut un dossier qui se compose d’une combinaison de l’identificateur de sécurité (SID) du compte **ADATUM\\aduser1** suivi du suffixe **_aduser1**.
+1. Sélectionnez le dossier que vous avez identifié à l’étape précédente et notez qu’il contient un fichier unique nommé **Profile_aduser1.vhd**.
 
 ### Exercice 2 : Arrêter et libérer les machines virtuelles Azure approvisionnées et utilisées dans le labo
 
