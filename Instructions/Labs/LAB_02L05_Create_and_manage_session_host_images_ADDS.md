@@ -17,9 +17,9 @@ lab:
 
 60 minutes
 
-## Scénario du labo
+## Scénario de labo
 
-Vous devez créer et gérer des images hôtes Azure Virtual Desktop dans un environnement Microsoft Entra DS.
+Vous devez créer et gérer des images hôtes Azure Virtual Desktop dans un environnement AD DS.
 
 ## Objectifs
   
@@ -34,7 +34,7 @@ Vous devez créer et gérer des images hôtes Azure Virtual Desktop dans un envi
 
 ## Instructions
 
-### Exercice 1 : Créer et gérer des images d’hôte de session
+### Exercice 1 : Créer et gérer une image d’hôte de session
   
 Les principales tâches de cet exercice sont les suivantes
 
@@ -42,14 +42,14 @@ Les principales tâches de cet exercice sont les suivantes
 1. Déployer Azure Bastion
 1. Configurer une image d’hôte Azure Virtual Desktop
 1. Créer une image d’hôte Azure Virtual Desktop
-1. Provisionner un pool d’hôtes Azure Virtual Desktop à l’aide de l’image personnalisée
+1. Approvisionner un pool d’hôtes Azure Virtual Desktop à l’aide de l’image personnalisée
 
 #### Tâche 1 : Préparer la configuration d’une image d’hôte Azure Virtual Desktop
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en utilisant les informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
 1. Dans le portail Azure, ouvrez le volet **Cloud Shell** en sélectionnant l’icône de barre d’outils juste à droite de la zone de texte de recherche.
 1. Lorsque vous êtes invité à sélectionner **Bash** ou **PowerShell**, sélectionnez **PowerShell**. 
-1. Sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, à partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour créer un groupe de ressources qui contiendra l’image d’hôte Azure Virtual Desktop :
+1. Sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, à partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour créer un groupe de ressources qui sera utiliser pour contenir l’image d’hôte Azure Virtual Desktop :
 
    ```powershell
    $vnetResourceGroupName = 'az140-11-RG'
@@ -59,7 +59,7 @@ Les principales tâches de cet exercice sont les suivantes
    ```
 
 1. Dans le portail Azure, dans la barre d’outils du volet Cloud Shell, sélectionnez l’icône **Charger/télécharger des fichiers**, dans le menu déroulant, sélectionnez **Charger**, puis chargez les fichiers **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_ azuredeployvm25.json** et **\\\\AZ-140\\AllFiles\\Labs\\02\\az140-25_azuredeployvm25.parameters.json** dans le répertoire de base Cloud Shell.
-1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour déployer une machine virtuelle Azure exécutant Windows 10 qui servira de client Azure Virtual Desktop dans le sous-réseau nouvellement créé :
+1. À partir de la session PowerShell dans le volet Cloud Shell, exécutez ce qui suit pour déployer une machine virtuelle Azure exécutant Windows 11 Entreprise multisession qui servira d’image source :
 
    ```powershell
    New-AzResourceGroupDeployment `
@@ -69,7 +69,7 @@ Les principales tâches de cet exercice sont les suivantes
      -TemplateParameterFile $HOME/az140-25_azuredeployvm25.parameters.json
    ```
 
-   > **Remarque** : Attendez que le déploiement se termine avant de passer à l’exercice suivant. Le déploiement peut prendre environ 10 minutes.
+   > **Remarque** : Attendez que le déploiement se termine avant de passer à l’exercice suivant. Le déploiement devrait prendre environ 5 à 10 minutes.
 
 #### Tâche 2 : Déployer Azure Bastion 
 
@@ -109,20 +109,18 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Sous l’onglet **Vérifier + créer** du panneau **Créer un bastion**, sélectionnez **Créer** :
 
-   > **Remarque** : Attendez que le déploiement se termine avant de passer à l’exercice suivant. Le déploiement peut prendre environ 5 minutes.
+   > **Remarque** : Attendez que le déploiement se termine avant de passer à l’exercice suivant. Le déploiement peut prendre environ 10 minutes.
 
 #### Tâche 3 : Configurer une image d’hôte Azure Virtual Desktop
 
 1. Dans le portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis dans le panneau **Machines virtuelles**, sélectionnez **az140-25-vm0**.
-1. Dans le panneau **az140-25-vm0**, sélectionnez **Se connecter**, puis dans le menu déroulant, sélectionnez **Bastion**. Sous l’onglet **Bastion** du panneau **az140-25-vm0\| Se connecter**, sélectionnez **Utiliser Bastion**.
-1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Se connecter** :
+1. Dans le panneau **az140-25-vm0**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
+1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
    |---|---|
    |Nom d’utilisateur|**Étudiant**|
    |Mot de passe|**Pa55w.rd1234**|
-
-   > **Remarque** : Vous allez commencer par installer les fichiers binaires FSLogix.
 
 1. Dans la session Bastion sur **az140-25-vm0**, démarrez **Windows PowerShell ISE** en tant qu’administrateur.
 1. Dans la session Bastion sur **az140-25-vm0**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour créer un dossier que vous utiliserez comme emplacement temporaire pour la configuration de l’image :
@@ -131,17 +129,9 @@ Les principales tâches de cet exercice sont les suivantes
    New-Item -Type Directory -Path 'C:\Allfiles\Labs\02' -Force
    ```
 
-1. Dans la session Bastion sur **az140-25-vm0**, démarrez Microsoft Edge, accédez à la [page de téléchargement de FSLogix](https://aka.ms/fslogix_download), téléchargez les fichiers binaires d’installation compressés FSLogix dans le dossier **C:\\Allfiles\\Labs\\02**, puis à partir de l’Explorateur de fichiers, extrayez le sous-dossier **x64** dans le même dossier.
-1. Dans la session Bastion sur **az140-25-vm0**, basculez vers la fenêtre **Administrateur : Windows PowerShell ISE**, puis à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour effectuer l’installation de OneDrive par ordinateur :
+   > **Remarque** : Vous allez parcourir l’installation et la configuration de Microsoft Teams classique (pour votre apprentissage personnel, car Teams est déjà présent sur l’image utilisée pour ce labo).
 
-   ```powershell
-   Start-Process -FilePath 'C:\Allfiles\Labs\02\x64\Release\FSLogixAppsSetup.exe' -ArgumentList '/quiet' -Wait
-   ```
-
-   > **Remarque** : Attendez que l’installation se termine. Cela peut prendre environ 1 minute. Si l’installation déclenche un redémarrage, reconnectez-vous à **az140-25-vm0**.
-
-   > **Remarque** : Ensuite, vous allez parcourir l’installation et la configuration de Microsoft Teams (pour votre apprentissage personnel, car Teams est déjà présent sur l’image utilisée pour ce labo).
-
+1. Dans la session Bastion à **az140-25-vm0**, accédez à **Panneau de configuration > Programmes > Programmes et fonctionnalités**, cliquez avec le bouton droit sur le **programme d’installation Teams à l’échelle de l’ordinateur**, puis sélectionnez **Désinstaller**.
 1. Dans la session Bastion sur **az140-25-vm0**, cliquez avec le bouton droit sur **Démarrer**et sélectionnez **Exécuter** dans le menu contextuel. Dans la boîte de dialogue **Exécuter**, dans la zone de texte **Ouvrir**, tapez **cmd** et appuyez sur la touche **Entrée** pour démarrer l’**Invite de commandes**.
 1. Dans la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, à partir de l’invite de commandes, exécutez ce qui suit pour préparer l’installation par ordinateur de Microsoft Teams :
 
@@ -156,7 +146,7 @@ Les principales tâches de cet exercice sont les suivantes
    C:\Allfiles\Labs\02\vc_redist.x64.exe /install /passive /norestart /log C:\Allfiles\Labs\02\vc_redist.log
    ```
 
-1. Dans la session Bastion sur **az140-25-vm0**, dans Microsoft Edge, accédez à la page de documentation intitulée [Déployer l’application de bureau Teams sur la machine virtuelle](https://docs.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), cliquez sur le lien **Version 64 bits**, puis lorsque vous y êtes invité, enregistrez le fichier **Teams_windows_x64.msi** dans le dossier **C:\\Allfiles\\Labs\\02**.
+1. Dans la session Bastion sur **az140-25-vm0**, dans Microsoft Edge, accédez à la page de documentation intitulée [Déployer l’application de bureau Teams sur la machine virtuelle](https://learn.microsoft.com/en-us/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm), cliquez sur le lien **Version 64 bits**, puis lorsque vous y êtes invité, enregistrez le fichier **Teams_windows_x64.msi** dans le dossier **C:\\Allfiles\\Labs\\02**.
 1. Dans la session Bastion sur **az140-25-vm0**, basculez vers la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, puis à partir de l’invite de commandes, exécutez ce qui suit pour effectuer l’installation par ordinateur de Microsoft Teams :
 
    ```cmd
@@ -164,9 +154,8 @@ Les principales tâches de cet exercice sont les suivantes
    ```
 
    > **Remarque** : Le programme d’installation prend en charge les paramètres ALLUSER=1 et ALLUSERS=1. Le paramètre ALLUSER=1 est réservé aux installations par ordinateur dans les environnements VDI. Le paramètre ALLUSERS=1 peut être utilisé dans des environnements VDI et non-VDI. 
-   > **Remarque** Si vous rencontrez une erreur indiquant **Une autre version du produit est déjà installée**, effectuez les étapes suivantes : Accédez à **Panneau de configuration > Programmes > Programmes et fonctionnalités**, cliquez avec le bouton droit sur le **programme d’installation Teams à l’échelle de l’ordinateur**, puis sélectionnez **Désinstaller**. Passez à la suppression du programme et réexécutez l’étape 13 ci-dessus. 
 
-1. Dans la session Bastion sur **az140-25-vm0**, démarrez **Windows PowerShell ISE** en tant qu’administrateur, puis à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour installer Microsoft Edge Chromium (pour votre apprentissage personnel, car Edge est déjà présent sur l’image utilisée pour ce labo).
+1. Dans la session Bastion sur **az140-25-vm0**, démarrez **Windows PowerShell ISE** en tant qu’administrateur, puis à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour installer Microsoft Edge (pour votre apprentissage personnel, car Edge est déjà présent sur l’image utilisée pour ce labo). :
 
    ```powershell
    Start-BitsTransfer -Source "https://aka.ms/edge-msi" -Destination 'C:\Allfiles\Labs\02\MicrosoftEdgeEnterpriseX64.msi'
@@ -177,7 +166,7 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Si vous êtes dans un environnement multilingue, vous aurez probablement besoin d’installer des modules linguistiques. Pour obtenir les détails de cette procédure, reportez-vous à l’article Microsoft Docs [Ajouter des modules linguistiques à une image Windows 10 multisession](https://docs.microsoft.com/en-us/azure/virtual-desktop/language-packs).
 
-   > **Remarque** : Ensuite, vous allez désactiver les Mises à jour automatiques Windows, désactiver l’Assistant Stockage, configurer la redirection du fuseau horaire et configurer la collecte des données de télémétrie. Normalement, vous devez d’abord appliquer toutes les mises à jour actuelles en premier. Pour réduire la durée du labo, ignorez cette étape.
+   > **Remarque** : Ensuite, vous allez désactiver les Mises à jour automatiques Windows, désactiver l’Assistant Stockage, configurer la redirection du fuseau horaire et configurer la collecte des données de télémétrie. En général, vous devez d’abord appliquer la mise à jour de qualité la plus récente. Pour réduire la durée du labo, ignorez cette étape.
 
 1. Dans la session Bastion sur **az140-25-vm0**, basculez vers la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, puis à partir de l’invite de commandes, exécutez ce qui suit pour désactiver les Mises à jour automatiques :
 
@@ -188,7 +177,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, à partir de l’invite de commandes, exécutez ce qui suit pour désactiver l’Assistant Stockage :
 
    ```cmd
-   reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
+   reg add "HKLM\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" /v 01 /t REG_DWORD /d 0 /f
    ```
 
 1. Dans la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, à partir de l’invite de commandes, exécutez ce qui suit pour configurer la redirection du fuseau horaire :
@@ -215,6 +204,8 @@ Les principales tâches de cet exercice sont les suivantes
    cleanmgr /d C: /verylowdisk
    ```
 
+   > **Remarque** : Le processus de nettoyage de disque peut prendre de 3 à 5 minutes.
+
 #### Tâche 4 : Créer une image d’hôte Azure Virtual Desktop
 
 1. Dans la session Bastion sur **az140-25-vm0**, dans la fenêtre **Administrateur : C:\windows\system32\cmd.exe**, à partir de l’invite de commandes, exécutez l’utilitaire sysprep pour préparer le système d’exploitation afin de générer une image et l’arrêter automatiquement :
@@ -225,6 +216,7 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Attendez la fin du processus de sysprep. Cela peut prendre environ 2 minutes. Cela arrête automatiquement le système d’exploitation. 
 
+1. À partir de votre ordinateur lab, dans la boîte de dialogue **Erreur de connexion**, sélectionnez **Fermer**.
 1. Sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis dans le panneau **Machines virtuelles**, sélectionnez **az140-25-vm0**.
 1. Dans le panneau **az140-25-vm0**, dans la barre d’outils située au-dessus de la section **Fonctionnalités essentielles**, cliquez sur **Actualiser**. Vérifiez que l’**État**de la machine virtuelle Azure est passé sur **Arrêtée**. Cliquez sur **Arrêter**, puis lorsque vous êtes invité à confirmer, cliquez sur **OK** pour basculer la machine virtuelle Azure vers l’état **Arrêtée (désallouée)**.
 1. Dans le panneau **az140-25-vm0**, vérifiez que l’**État**de la machine virtuelle Azure est passé sur **Arrêtée (désallouée)**, puis dans la barre d’outils, cliquez sur **Capturer**. Cela affiche automatiquement le panneau **Créer une image** .
@@ -234,7 +226,7 @@ Les principales tâches de cet exercice sont les suivantes
    |---|---|
    |Partager l’image dans la galerie de calcul Azure|**Oui, la partager dans une galerie sous forme de version d’image**|
    |Supprimer automatiquement cette machine virtuelle après avoir créé l’image|case décochée|
-   |Galerie de calcul Azure cible|nom d’une nouvelle galerie **az14025imagegallery**|
+   |Galerie de calcul Azure cible|créer une galerie appelée **az14025imagegallery**|
    |État du système d'exploitation|**Généralisé**|
 
 1. Sous l’onglet **Informations de base** du panneau **Créer une image**, sous la zone de texte **Définition d’image de machine virtuelle cible**, cliquez sur **Créer nouveau**.
@@ -256,11 +248,11 @@ Les principales tâches de cet exercice sont les suivantes
    |Date de fin de vie|Un an après la date actuelle|
    |Nombre de réplicas par défaut|**1**|
    |Nombre de réplicas de la région cible|**1**|
-   |Type de compte de stockage|**SSD Premium LRS**|
+   |Référence SKU de stockage par défaut|**SSD Premium LRS**|
 
 1. Sous l’onglet **Vérifier + créer** du panneau **Créer une image**, cliquez sur **Créer**.
 
-   > **Remarque** : Attendez la fin du déploiement. Ceci peut prendre environ 20 minutes.
+   > **Remarque** : Attendez la fin du déploiement. Ceci peut prendre environ de 10 à 15 minutes.
 
 1. Sur votre ordinateur de labo, dans le navigateur web affichant le portail Azure, recherchez et sélectionnez **Galeries de calcul Azure**. Dans le panneau **Galeries de calcul Azure**, sélectionnez l’entrée **az14025imagegallery**, puis dans le panneau ****az14025imagegallery****, vérifiez la présence de l’entrée **az140-25-host-image** représentant l’image qui vient d’être créée.
 
@@ -284,9 +276,10 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom du pool d’hôtes|**az140-25-hp4**|
    |Emplacement|nom de la région Azure dans laquelle vous avez déployé des ressources dans le premier exercice de ce labo|
    |Environnement de validation|**Aucun**|
+   |Type de groupe d’applications préféré|**Bureau**|
    |Type de pool d’hôtes|**Groupé**|
-   |Limite de session maximale|**50**|
    |Algorithme d’équilibrage de charge|**À largeur prioritaire**|
+   |Limite de session maximale|**12**|
 
 1. Sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants :
 
@@ -309,19 +302,21 @@ Les principales tâches de cet exercice sont les suivantes
    |Taille de la machine virtuelle|**Standard D2s v3**|
    |Nombre d'ordinateurs virtuels|**1**|
    |Type de disque du système d’exploitation|**SSD Standard**|
+   |Diagnostics de démarrage|**Activer avec le compte de stockage managé (recommandé)**|
    |Réseau virtuel|**az140-adds-vnet11**|
    |Sous-réseau|**hp4-Subnet (10.0.4.0/24)**|
    |Groupe de sécurité réseau|**De base**|
-   |Ports d’entrée publics|**Oui**|
-   |Ports d’entrée à autoriser|**RDP**|
+   |Ports d’entrée publics|**Aucun**|
+   |Sélectionnez le répertoire que vous souhaitez rejoindre|**Active Directory**|
    |UPN de jonction de domaine AD|**student@adatum.com**|
    |Mot de passe|**Pa55w.rd1234**|
+   |Confirmer le mot de passe|**Pa55w.rd1234**|
    |Spécifier un domaine ou une unité|**Oui**|
    | Domaine à rejoindre|**adatum.com**|
    |Chemin de l’unité d’organisation|**OU=WVDInfra,DC=adatum,DC=com**|
-   |Nom d'utilisateur|Étudiant|
-   |Mot de passe|Pa55w.rd1234|
-   |Confirmer le mot de passe|Pa55w.rd1234|
+   |Nom d'utilisateur|**Étudiant**|
+   |Mot de passe|**Pa55w.rd1234**|
+   |Confirmer le mot de passe|**Pa55w.rd1234**|
 
 1. Sous l’onglet **Espace de travail** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Vérifier + créer** :
 
@@ -332,11 +327,10 @@ Les principales tâches de cet exercice sont les suivantes
 1. Sous l’onglet **Vérifier + créer** du panneau **Créer un pool d’hôtes**, sélectionnez **Créer**.
 
    > **Remarque** : Attendez la fin du déploiement. Ceci peut prendre environ 10 minutes.
-   > 
-   > **Remarque** Si le déploiement échoue parce que la limite de quota a été atteinte, effectuez les étapes décrites dans le premier labo pour demander automatiquement une augmentation de quota de la limite Standard D2sv3 à 30.
+
+   > **Remarque** : Si le déploiement échoue parce que la limite de quota a été atteinte, effectuez les étapes décrites dans le premier labo pour demander automatiquement une augmentation de quota de la limite Standard D2sv3 à 30.
 
    > **Remarque** : Après le déploiement d’hôtes basés sur des images personnalisées, pensez à exécuter l’outil Virtual Desktop Optimization Tool, disponible dans [son dépôt GitHub](https://github.com/The-Virtual-Desktop-Team/).
-
 
 ### Exercice 2 : Arrêter et libérer les machines virtuelles Azure provisionnées dans le labo
 

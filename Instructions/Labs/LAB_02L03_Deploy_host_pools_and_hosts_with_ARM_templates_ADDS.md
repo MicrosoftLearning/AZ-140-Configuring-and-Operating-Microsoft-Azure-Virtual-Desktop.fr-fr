@@ -51,7 +51,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [Portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
 1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
@@ -79,7 +79,7 @@ Les principales tâches de cet exercice sont les suivantes
    (Get-ADUser -Filter "sAMAccountName -eq 'aduser8'").userPrincipalName
    ```
 
-   > **Remarque** : Enregistrez toutes les valeurs du nom d’utilisateur principal que vous avez identifiées. Vous en aurez besoin plus tard dans ce labo.
+   > **Remarque** : Enregistrez toutes les valeurs de nom d’utilisateur principal que vous avez identifiées **et** le nom unique de l’unité d’organisation WVDInfra. Vous en aurez besoin plus tard dans ce labo.
 
 1. Dans la session Bastion vers **az140-dc-vm11**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour calculer le délai d’expiration du jeton nécessaire pour effectuer un déploiement basé sur un modèle :
 
@@ -100,11 +100,12 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom|**hp2-Subnet**|
    |Plage d’adresses de sous-réseau|**10.0.2.0/24**|
 
-1. Dans la session Bastion sur **az140-dc-vm11**, dans le Portail Azure, utilisez la zone de texte **Rechercher dans les ressources, services et documents** en haut de la page pour rechercher et accéder aux **Groupes de sécurité réseau**. Dans le panneau **Groupes de sécurité réseau**, sélectionnez ensuite le groupe de sécurité dans le groupe de ressources **az140-11-RG**.
+1. Dans la session Bastion sur **az140-dc-vm11**, dans le portail Azure, utilisez la zone de texte **Rechercher dans les ressources, services et documents** en haut de la page pour rechercher et accéder à **Groupes de sécurité réseau** puis, dans le panneau **Groupes de sécurité réseau**, sélectionnez l’unique groupe de sécurité réseau.
 1. Dans le panneau du groupe de sécurité réseau, dans le menu vertical de gauche, dans la section **Paramètres**, cliquez sur **Propriétés**.
 1. Dans le panneau **Propriétés**, cliquez sur l’icône **Copier dans le Presse-papiers** à droite de la zone de texte **ID de la ressource**. 
 
    > **Remarque** : La valeur devrait ressembler au format `/subscriptions/de8279a3-0675-40e6-91e2-5c3728792cb5/resourceGroups/az140-11-RG/providers/Microsoft.Network/networkSecurityGroups/az140-cl-vm11-nsg`, même si l’Identifiant de l’abonnement diffère. Enregistrez-le, car vous allez en avoir besoin dans la prochaine tâche.
+1. Vous devez maintenant avoir **six** valeurs enregistrées. Un nom unique, trois noms d’utilisateurs principaux, une valeur DateTime et l’ID de ressource. Si vous n’avez pas six valeurs enregistrées, relisez cette tâche **avant** de continuer. 
 
 #### Tâche 2 : Déployer un pool d’hôtes et des hôtes Azure Virtual Desktop en utilisant un modèle Azure Resource Manager
 
@@ -118,7 +119,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Paramètre|Valeur|
    |---|---|
    |Abonnement|le nom de l’abonnement Azure que vous utilisez dans ce labo|
-   |Groupe de ressources|le nom d’un nouveau groupe de ressources **az140-23-RG**|
+   |Groupe de ressources|Créez un **nouveau** groupe de ressources nommé **az140-23-RG**.|
    |Région|le nom de la région Azure dans laquelle vous avez déployé des machines virtuelles Azure hébergeant des contrôleurs de domaine AD DS dans le labo **Préparer le déploiement d’Azure Virtual Desktop (AD DS)**|
    |Emplacement|le nom de la même région Azure que celle définie comme valeur pour les paramètres **Région**|
    |Emplacement de l’espace de travail|le nom de la même région Azure que celle définie comme valeur pour les paramètres **Région**|
@@ -176,15 +177,13 @@ Les principales tâches de cet exercice sont les suivantes
    |Groupe de ressources|**az140-23-RG**|
    |Jeton du pool d’hôtes|la valeur du jeton généré dans la tâche précédente|
    |Emplacement du pool d’hôtes|le nom de la région Azure dans laquelle vous avez déployé le pool d’hôtes précédemment dans ce labo|
-   |Nom d’utilisateur du compte Administrateur de la machine virtuelle|**étudiant** Ne pas utiliser @adatum.com|
-   |Mot de passe du compte Administrateur de la machine virtuelle|**Pa55w.rd1234**|
    |Emplacement de la machine virtuelle|le nom de la même région Azure que celle définie comme valeur pour les paramètres **Emplacement du pool d’hôte**|
    |Créer un groupe de sécurité réseau|**false**|
    |ID du groupe de sécurité de réseau|la valeur du paramètre resourceID du groupe de sécurité réseau existant que vous avez identifié dans la tâche précédente|
 
 1. Dans le panneau **Déploiement personnalisé**, sélectionnez **Vérifier + créer**, puis **Créer**.
 
-   > **Remarque** : Attendez la fin du déploiement avant de passer à la tâche suivante. Ceci peut prendre environ 5 minutes.
+   > **Remarque** : Attendez la fin du déploiement avant de passer à la tâche suivante. Ceci peut prendre environ 10 minutes.
 
 #### Tâche 6 : Vérifier les modifications apportées au pool d’hôtes Azure Virtual Desktop
 
@@ -206,12 +205,12 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans le panneau **az140-23-hp2 \| Groupes d’applications**, dans la liste des groupes d’applications, sélectionnez **az140-23-hp2-DAG**.
 1. Dans le panneau **az140-23-hp2-DAG**, dans le menu vertical de gauche, sélectionnez **Affectations**. 
 1. Dans le panneau **az140-23-hp2-DAG \| Affectations**, sélectionnez **+ Ajouter**.
-1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-personal**, puis cliquez sur **Sélectionner**.
+1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **Groupes**, puis **az140-wvd-personal**, puis cliquez sur **Sélectionner**.
 
    > **Remarque** : Examinons maintenant l’expérience d’un utilisateur se connectant au pool d’hôtes Azure Virtual Desktop.
 
 1. Depuis votre ordinateur de labo, dans la fenêtre du navigateur affichant le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez l’entrée **az140-cl-vm11**.
-1. Dans le panneau **az140-cl-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-cl-vm11\| Connecter**, sélectionnez **Utiliser bastion**.
+1. Dans le panneau **az140-cl-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
@@ -224,10 +223,9 @@ Les principales tâches de cet exercice sont les suivantes
 3. Dans la session Bastion vers **az140-cl-vm11**, dans la fenêtre Bureau à distance, à la **page Prise en main**, cliquez sur **S’abonner**.
 4. Dans la fenêtre du client **Bureau à distance**, sélectionnez **S’abonner** et, lorsque vous y êtes invité, connectez-vous avec les informations d’identification **aduser7**, en fournissant son userPrincipalName et le mot de passe défini lors de la création de ce compte d’utilisateur.
 
-   > **Remarque** : Sinon, dans la fenêtre du client **Bureau à distance**, sélectionnez **S’abonner avec l’URL**. Dans le volet **S’abonner à un espace de travail**, dans l’**E-mail ou l’URL de l’espace de travail**, tapez **https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery**, sélectionnez **Suivant** et, lorsque vous y êtes invité, connectez-vous avec les informations d’identification **aduser7** (à l’aide de son attribut userPrincipalName comme le nom d’utilisateur et le mot de passe définis lors de la création de ce compte). 
+   > **Remarque** : Sinon, dans la fenêtre du client **Bureau à distance**, sélectionnez **S’abonner avec l’URL**. Dans le volet **S’abonner à un espace de travail**, dans l’**E-mail ou l’URL de l’espace de travail**, tapez **https://client.wvd.microsoft.com/api/arm/feeddiscovery**, sélectionnez **Suivant** et, lorsque vous y êtes invité, connectez-vous avec les informations d’identification **aduser7** (à l’aide de son attribut userPrincipalName comme le nom d’utilisateur et le mot de passe définis lors de la création de ce compte). 
 
 1. Dans la page **Bureau à distance**, double-cliquez sur l’icône **SessionDesktop**. Lorsque vous êtes invité à entrer les informations d’identification, saisissez à nouveau le même mot de passe, sélectionnez la boîte de dialogue **Me rappeler**, puis cliquez sur **OK**.
-1. Dans la fenêtre **Rester connecté à toutes vos applications**, décochez la case **Autoriser mon organisation à gérer mes appareils** et sélectionnez **Non, se connecter à cette application uniquement**. 
 1. Assurez-vous que **aduser7** s’est correctement connecté au moyen du Bureau à distance à un hôte.
 1. Dans la session Bureau à distance vers l’un des hôtes en tant qu’**aduser7**, cliquez avec le bouton droit sur **Démarrer**. Dans le menu contextuel, sélectionnez **Arrêter ou déconnecter**, puis cliquez sur **Se déconnecter** dans le menu en cascade.
 
@@ -249,7 +247,6 @@ Les principales tâches de cet exercice sont les suivantes
 1. Revenez à la session Bastion vers **az140-cl-vm11**, dans la fenêtre **Bureau à distance**, cliquez sur l’icône de sélection dans le coin supérieur droit, cliquez sur **Se désabonner** dans le menu déroulant et, lorsque vous êtes invité à confirmer, cliquez sur **Continuer**.
 1. Dans la session Bastion vers **az140-cl-vm11**, dans la fenêtre **Bureau à distance**, à la page **Prise en main**, cliquez sur **S’abonner**.
 1. Lorsque vous êtes invité à vous connecter, dans le volet **Choisir un compte**, cliquez sur **Utiliser un autre compte** et connectez-vous à l’aide du nom d’utilisateur principal du compte d’utilisateur **aduser8** (avec le mot de passe défini lors de la création de ce compte).
-1. Dans la fenêtre **Rester connecté à toutes vos applications**, décochez la case **Autoriser mon organisation à gérer mes appareils** et sélectionnez **Non, se connecter à cette application uniquement**. 
 1. Dans la page **Bureau à distance**, double-cliquez sur l’icône **SessionDesktop**, assurez-vous de recevoir un message d’erreur indiquant **Nous n’avons pas pu nous connecter, car il n’existe actuellement aucune ressource disponible. Réessayez ultérieurement ou contactez le support technique pour obtenir de l’aide persiste**, puis cliquez sur **OK**.
 
    > **Remarque** : Cela est attendu, car le pool d’hôtes est configuré pour une attribution directe et **aduser8** n’a pas été affecté à un hôte.
@@ -257,6 +254,8 @@ Les principales tâches de cet exercice sont les suivantes
 1. Basculez vers votre ordinateur de labo, vers le navigateur web affichant le Portail Azure et, dans le panneau **az140-23-hp2 \| Hôtes de session**, sélectionnez le lien **(Attribuer)** dans la colonne **Utilisateur attribué** en regard de l’un des deux hôtes non attribués restants.
 1. Sur l’option **Attribuer un utilisateur**, sélectionnez **aduser8**, cliquez sur **Sélectionner** et, lorsque vous êtes invité à confirmer, cliquez sur **OK**.
 1. Revenez à la session Bastion vers **az140-cl-vm11**, dans la fenêtre du **Bureau à distance**, double-cliquez sur l’icône **SessionDesktop**. Lorsque vous êtes invité à entrer le mot de passe, tapez le mot de passe défini lors de la création de ce compte d’utilisateur, cliquez sur **OK** et assurez-vous de pouvoir vous connecter à l’hôte attribué.
+1. Dans le Bureau de session vers l’hôte affecté pour **aduser8**, cliquez avec le bouton droit sur **Démarrer**. Dans le menu contextuel, sélectionnez **Arrêter ou déconnecter** puis, dans le menu en cascade, cliquez sur **Se déconnecter**.
+1. Dans la session Bastion sur **az140-cl-vm11**, cliquez avec le bouton droit sur **Démarrer**, dans le menu contextuel, sélectionnez **Arrêter ou se déconnecter**, dans le menu en cascade, cliquez sur **Se déconnecter**, puis cliquez sur **Fermer**.
 
 ### Exercice 2 : Arrêter et libérer des machines virtuelles Azure approvisionnées dans le labo
 

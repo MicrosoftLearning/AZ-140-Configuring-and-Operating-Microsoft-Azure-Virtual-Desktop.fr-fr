@@ -35,7 +35,7 @@ Vous devez contrôler l’accès au déploiement d’Azure Virtual Desktop dans 
 
 ## Instructions
 
->**Important** : Microsoft a renommé **Azure Active Directory** (**Azure AD**) **Microsoft Entra ID**. Pour plus d’informations sur cette modification, consultez [Nouveau nom pour Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Cette modification étant en cours d’application, vous rencontrerez peut-être encore des cas d’incohérences entre l’instruction du labo et les éléments de l’interface à mesure que vous parcourez chaque exercice. Merci de bien vouloir tenir compte de cet état de fait (en particulier, dans ce laboratoire, **Microsoft Entra Connect** désigne le nouveau nom d’**Azure Active Directory Connect** et le terme **Azure Active Directory** est toujours utilisé lors de la configuration du point de connexion de service dans la tâche 4 de l’exercice 1).
+>**Important** : Microsoft a renommé **Azure Active Directory** (**Azure AD**) **Microsoft Entra ID**. Pour plus d’informations sur cette modification, consultez [Le nouveau nom d’Azure Active Directory](https://learn.microsoft.com/en-us/entra/fundamentals/new-name). Cette modification étant en cours d’application, vous rencontrerez peut-être encore des cas d’incohérences entre l’instruction du labo et les éléments de l’interface à mesure que vous parcourez chaque exercice. Merci de bien vouloir tenir compte de cet état de fait (en particulier, dans ce laboratoire, **Microsoft Entra Connect** désigne le nouveau nom d’**Azure Active Directory Connect** et le terme **Azure Active Directory** est toujours utilisé lors de la configuration du point de connexion de service dans la tâche 4 de l’exercice 1).
 
 >**Important** : L’activation d’un essai gratuit de Microsoft Entra ID P2 nécessite la fourniture d’informations de carte de crédit. Pour cette raison, cet exercice est entièrement facultatif. Au lieu de cela, les instructeurs de cours pourront choisir de faire la démonstration de cette fonctionnalité aux étudiants.
 
@@ -47,7 +47,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Configurer l’authentification multifacteur (MFA) Microsoft Entra
 1. Inscrire un utilisateur pour l’authentification multifacteur Microsoft Entra
 1. Configurer la jointure hybride Microsoft Entra
-1. Déclencher la synchronisation delta Microsoft Entra Connect
+1. Déclencher la synchronisation delta Microsoft Azure Active Directory Connect
 
 #### Tâche 1 : Configurer les licences Microsoft Entra Premium P2
 
@@ -101,7 +101,7 @@ Les principales tâches de cet exercice sont les suivantes
 > **Remarque** : Il est possible de tirer profit de cette fonctionnalité pour implémenter une sécurité supplémentaire lors de la configuration de l’accès conditionnel pour les appareils en fonction de leur état de jointure Microsoft Entra.
 
 1. Sur l’ordinateur de labo, dans le navigateur web affichant le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez **Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
@@ -109,18 +109,17 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom d’utilisateur|**Étudiant**|
    |Mot de passe|**Pa55w.rd1234**|
 
-1. Dans la session Bastion pour **az140-dc-vm11**, dans le menu **Démarrer**, développez le dossier **Microsoft Entra Connect** et sélectionnez **Microsoft Entra Connect**.
-   > **Remarque** Si vous obtenez une fenêtre d’erreur de défaillance indiquant que le service de synchronisation n’est pas en cours d’exécution, accédez à la fenêtre de commande PowerShell et entrez **Start-Service "ADSync"**, puis réessayez l’étape 4.
-1. Dans la page **Bienvenue dans Microsoft Entra Connect** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Configurer**.
-1. Dans la page **Tâches supplémentaires** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Configurer les options de l’appareil** et sélectionnez **Suivant**.
-1. Dans la page **Vue d’ensemble** de la fenêtre **Microsoft Entra Connect**, évaluez les informations relatives à la **jointure hybride Microsoft Entra** et la **réécriture d’appareil**, puis sélectionnez **Suivant**.
-1. Dans la page **Connexion à Microsoft Entra** de la fenêtre **Microsoft Entra Connect**, authentifiez-vous à l’aide des informations d’identification du compte d’utilisateur **aadsyncuser** créé dans l’exercice précédent, puis sélectionnez **Suivant**.  
+1. Dans la session Bastion à **az140-dc-vm11**, dans le menu **Démarrer**, développez le dossier **Azure AD Connect** et sélectionnez **Azure AD Connect**.
 
-   > **Remarque** : Indiquez l’attribut userPrincipalName du compte **aadsyncuser** enregistré précédemment dans ce labo et spécifiez le mot de passe défini lors de la création de ce compte d’utilisateur. 
+   > **Remarque** Si vous obtenez une fenêtre d’erreur de défaillance indiquant que le service de synchronisation n’est pas en cours d’exécution, accédez à la fenêtre de commande PowerShell et entrez **Start-Service "ADSync"**, puis réessayez l’étape précédente.
 
-1. Dans la page **Options de l’appareil** de la fenêtre **Microsoft Entra Connect**, assurez-vous de la sélection de l’option **Configurer la jointure hybride Microsoft Entra** et sélectionnez **Suivant**. 
-1. Dans la page **Systèmes d’exploitation de l’appareil** de la fenêtre **Microsoft Entra Connect**, sélectionnez la case à cocher **Appareils joints à un domaine Windows 10 ou ultérieur**, puis **Suivant**. 
-1. Dans la page **Configuration SCP** de la fenêtre **Microsoft Entra Connect**, sélectionnez la case à cocher en regard de l’entrée **adatum.com**. Dans la liste déroulante **Service d’authentification**, sélectionnez l’entrée **Microsoft Entra**, puis **Ajouter**. 
+1. Dans la page **Bienvenue dans Azure AD Connect** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez **Configurer**.
+1. Dans la page **Tâches supplémentaires** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez **Configurer les options de l’appareil** et sélectionnez **Suivant**.
+1. Dans la page **Vue d’ensemble** de la fenêtre **Microsoft Azure Active Directory Connect**, évaluez les informations relatives à la **jointure hybride Microsoft Entra** et la **réécriture d’appareil**, puis sélectionnez **Suivant**.
+1. Dans la page **Connexion à Microsoft Entra** de la fenêtre **Microsoft Entra Connect**, authentifiez-vous à l’aide des informations d’identification du compte d’utilisateur **aadsyncuser** créé dans le labo précédent, puis sélectionnez **Suivant**.  
+1. Dans la page **Options de l’appareil** de la fenêtre **Microsoft Azure Active Directory Connect**, assurez-vous de la sélection de l’option **Configurer la jointure Hybrid Azure AD** et sélectionnez **Suivant**. 
+1. Dans la page **Systèmes d’exploitation de l’appareil** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez la case à cocher **Appareils joints à un domaine Windows 10 ou ultérieur**, puis **Suivant**. 
+1. Dans la page **Configuration SCP** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez la case à cocher en regard de l’entrée **adatum.com**. Dans la liste déroulante **Service d’authentification**, sélectionnez l’entrée **Azure Active Directory**, puis **Ajouter**. 
 1. Lorsque vous y êtes invité, dans la boîte de dialogue **Informations d’identification d’administrateur d’entreprise**, spécifiez les informations d’identification suivantes et sélectionnez **OK** :
 
    |Paramètre|Valeur|
@@ -128,8 +127,8 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom d’utilisateur|**ADATUM\Student**|
    |Mot de passe|**Pa55w.rd1234**|
 
-1. De retour sur la page **Configuration SCP** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Suivant**.
-1. Dans la page **Prêt à configurer** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Configurer**, puis **Quitter** une fois la configuration terminée.
+1. De retour sur la **page de configuration** SCP dans la **fenêtre Microsoft Azure Active Directory Connect** , sélectionnez **Suivant**.
+1. Dans la page **Prêt à configurer** de la fenêtre **Microsoft Entra Microsoft Azure Active Directory Connect**, sélectionnez **Configurer**, puis **Quitter** une fois la configuration terminée.
 1. Dans la session Bastion pour **az140-dc-vm11**, démarrez **Windows PowerShell ISE** en tant qu’administrateur.
 1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour déplacer le compte d’ordinateur **az140-cl-vm11** vers l’unité d’organisation (UO) **WVDClients** :
 
@@ -138,22 +137,21 @@ Les principales tâches de cet exercice sont les suivantes
    ```
 
 1. Dans la session Bastion pour **az140-dc-vm11**, dans le menu **Démarrer**, développez le dossier **Microsoft Entra Connect** et sélectionnez **Microsoft Entra Connect**.
-1. Dans la page **Bienvenue dans Microsoft Entra Connect** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Configurer**.
-1. Dans la page **Tâches supplémentaires** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Personnaliser les options de synchronisation** et sélectionnez **Suivant**.
-1. Dans la page **Connexion à Microsoft Entra** de la fenêtre **Microsoft Entra Connect**, authentifiez-vous à l’aide des informations d’identification du compte d’utilisateur **aadsyncuser** créé dans l’exercice précédent, puis sélectionnez **Suivant**. 
+1. Dans la page **Bienvenue dans Azure AD Connect** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez **Configurer**.
+1. Dans la page **Tâches supplémentaires** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez **Personnaliser les options de synchronisation** et sélectionnez **Suivant**.
+1. Dans la page **Connexion à Microsoft Entra** de la fenêtre **Microsoft Azure Active Directory Connect**, authentifiez-vous à l’aide des informations d’identification du compte d’utilisateur **aadsyncuser** créé dans l’exercice précédent, puis sélectionnez **Suivant**. 
+1. Dans la page **Connecter vos annuaires** de la fenêtre **Microsoft Azure Active Directory Connect**, sélectionnez **Suivant**.
+1. Dans la page **Filtrage du domaine et de l’unité d’organisation** de la fenêtre **Microsoft Azure Active Directory Connect**, assurez-vous de la sélection de l’option **Synchroniser les domaines et les unités d’organisation sélectionnés**, développez le nœud **adatum.com**, assurez-vous de la sélection de la case à cocher en regard de l’unité d’organisation **ToSync**, sélectionnez la case à cocher en regard de l’unité d’organisation **WVDClients**, puis **Suivant**.
+1. Dans la page **Fonctionnalités facultatives** de la fenêtre **Microsoft Azure Active Directory Connect**, acceptez les paramètres par défaut et sélectionnez **Suivant**.
+1. Dans la page **Prêt à configurer** de la fenêtre **Microsoft Azure Active Directory Connect**, vérifiez que la case **Démarrez le processus de synchronisation une fois la configuration terminée** est cochée et sélectionnez **Configurer**.
+1. Vérifiez les informations de la page **Configuration terminée**, puis cliquez sur **Quitter** pour fermer la fenêtre **Microsoft Azure Active Directory Connect**.
 
-   > **Remarque** : Indiquez l’attribut userPrincipalName du compte **aadsyncuser** enregistré précédemment dans ce labo et spécifiez le mot de passe défini lors de la création de ce compte d’utilisateur. 
+#### Tâche 5 : Déclencher la synchronisation complète Microsoft Azure Active Directory Connect
 
-1. Dans la page **Connecter vos répertoires** de la fenêtre **Microsoft Entra Connect**, sélectionnez **Suivant**.
-1. Dans la page **Filtrage du domaine et de l’unité d’organisation** de la fenêtre **Microsoft Entra Connect**, assurez-vous de la sélection de l’option **Synchroniser les domaines et les unités d’organisation sélectionnés**, développez le nœud **adatum.com**, assurez-vous de la sélection de la case à cocher en regard de l’unité d’organisation **ToSync**, sélectionnez la case à cocher en regard de l’unité d’organisation **WVDClients**, puis **Suivant**.
-1. Dans la page **Fonctionnalités facultatives** de la fenêtre **Microsoft Entra Connect**, acceptez les paramètres par défaut et sélectionnez **Suivant**.
-1. Dans la page **Prêt à configurer** de la fenêtre **Microsoft Entra Connect**, vérifiez que la case à cocher **Démarrer le processus de synchronisation lorsque la configuration se termine** est sélectionnée et sélectionnez **Configurer**.
-1. Passez en revue les informations de la page **Configuration complète** et sélectionnez **Quitter** pour fermer la fenêtre **Microsoft Entra Connect**.
-
-#### Tâche 5 : Déclencher la synchronisation delta Microsoft Entra Connect
-
+1. À partir de votre ordinateur de labo, dans le Portail Azure, recherchez et sélectionnez **Machines virtuelles**, puis, dans le panneau **Machines virtuelles**, sélectionnez l’entrée**az140-cl-vm11**. Cette opération ouvre le panneau **az140-cl-vm11**.
+1. Dans le panneau **az140-cl-vm11** , sélectionnez **Redémarrer** , puis attendez que la notification de **machine** virtuelle redémarrée avec succès s’affiche.
 1. Dans la session Bastion vers **az140-dc-vm11**, basculez vers la fenêtre **Administrateur : Windows PowerShell ISE**.
-1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour déclencher la synchronisation delta Microsoft Entra Connect :
+1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Volet de la console Windows PowerShell ISE** , exécutez ce qui suit pour déclencher la synchronisation complète de Microsoft Azure Active Directory Connect :
 
    ```powershell
    Import-Module -Name "C:\Program Files\Microsoft Azure AD Sync\Bin\ADSync"
@@ -161,9 +159,9 @@ Les principales tâches de cet exercice sont les suivantes
    ```
 
 1. Dans la session Bastion pour **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Lorsque vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Administrateur général dans le locataire Microsoft Entra associé à l’abonnement Azure utilisé dans ce labo.
-1. Dans la session Bastion pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, recherchez et sélectionnez **Azure Active Directory** pour accéder au locataire Microsoft Entra associé à l’abonnement Azure utilisé pour ce labo.
-1. Dans le panneau Azure Active Directory, dans la barre verticale du menu de gauche, dans la section **Gérer**, cliquez sur **Appareils**. 
-1. Dans le panneau **Appareils | Tous les appareils**, évaluez la liste des appareils et assurez-vous que l’appareil **az140-cl-vm11** est répertorié avec l’entrée **jointure hybride Microsoft Entra** dans la colonne **Type de jointure**.
+1. Dans la session Bastion à **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Microsoft Entra ID** pour accéder au locataire Microsoft Entra associé à l’abonnement Azure que vous utilisez pour ce labo.
+1. Dans le panneau Microsoft Entra ID, dans la barre de menus verticale située à gauche, dans la section **Gérer**, cliquez sur **Appareils**. 
+1. Dans le panneau **Appareils | Tous les appareils**, évaluez la liste des appareils et assurez-vous que l’appareil **az140-cl-vm11** est répertorié avec l’entrée **jointure Microsoft Entra Hybrid** dans la colonne **Type de jointure**.
 
    > **Remarque** : Quelques minutes peuvent être nécessaires avant que l’appareil n’apparaisse dans le Portail Azure.
 

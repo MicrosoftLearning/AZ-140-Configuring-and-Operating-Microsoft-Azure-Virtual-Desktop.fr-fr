@@ -17,9 +17,9 @@ lab:
 
 30 minutes
 
-## Scénario du labo
+## Scénario de labo
 
-Vous devez implémenter et gérer le stockage pour un déploiement Azure Virtual Desktop dans un environnement Microsoft Entra DS.
+Vous devez implémenter et gérer le stockage pour un déploiement Azure Virtual Desktop dans un environnement AD DS.
 
 ## Objectifs
   
@@ -47,7 +47,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. À partir de votre ordinateur labo, démarrez un navigateur web, accédez au [portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
 1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Connecter**, dans le menu déroulant, sélectionnez **Bastion**, sous l’onglet **Bastion** du panneau **az140-dc-vm11 \| Connecter**, sélectionnez **Utiliser Bastion**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez **Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
@@ -55,14 +55,14 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom d’utilisateur|**Student@adatum.com**|
    |Mot de passe|**Pa55w.rd1234**|
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Si vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Comptes de stockage**, puis, dans le panneau **Comptes de stockage**, sélectionnez **+ Créer**.
+1. Dans la session Bastion pour **az140-dc-vm11**, démarrez Microsoft Edge et accédez au [portail Azure](https://portal.azure.com). Si vous y êtes invité, connectez-vous à l’aide des informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement utilisé dans ce labo.
+1. Dans la session Bastion vers **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, recherchez et sélectionnez **Comptes de stockage**. Sélectionnez ensuite **+ Créer** dans le panneau **Comptes de stockage**.
 1. Sous l’onglet **Options de base** du volet **Créer un compte de stockage**, spécifiez les paramètres suivants (conservez les valeurs par défaut pour les autres) :
 
    |Paramètre|Valeur|
    |---|---|
    |Abonnement|le nom de l’abonnement Azure que vous utilisez dans ce labo|
-   |Resource group|le nom d’un nouveau groupe de ressources **az140-22-RG**|
+   |Resource group|Créez un **nouveau** groupe de ressources nommé **az140-22-RG**|
    |Nom du compte de stockage|n’importe quel nom global unique d’une longueur comprise entre 3 et 15 caractères, composé de lettres minuscules et de chiffres, et commençant par une lettre|
    |Région|le nom d’une région Azure hébergeant l’environnement de laboratoire Azure Virtual Desktop|
    |Performances|**Standard**|
@@ -77,32 +77,27 @@ Les principales tâches de cet exercice sont les suivantes
 
 #### Tâche 2 : Créer un partage Azure Files
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, revenez au panneau **Comptes de stockage** et sélectionnez l’entrée représentant le compte de stockage nouvellement créé.
+1. Dans la session Bastion vers **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, revenez au panneau **Comptes de stockage** et sélectionnez l’entrée représentant le compte de stockage nouvellement créé.
 1. Dans le panneau compte de stockage, dans la section **Stockage de données**, sélectionnez **Partages de fichiers**, puis **+ Partage de fichiers**.
-1. Dans le panneau **Nouveau partage de fichiers**, spécifiez les paramètres suivants et sélectionnez **Créer** (laissez d’autres paramètres avec leurs valeurs par défaut) :
+1. Dans le volet **Nouveau partage de fichiers**, spécifiez les paramètres suivants et sélectionnez **Suivant : Sauvegarde >** (conservez les valeurs par défaut des autres paramètres) :
 
    |Paramètre|Valeur|
    |---|---|
    |Nom|**az140-22-profiles**|
-   |Niveaux|**Transaction optimisée**|
+   |Niveau d’accès|**Transaction optimisée**|
+
+1. Dans le panneau **Sauvegarde**, décochez la case **Activer la sauvegarde**, sélectionnez **Vérifier + créer**, attendez que le processus de validation se termine, puis sélectionnez **Créer**.
 
 #### Tâche 3 : Activer l’authentification AD DS pour le compte de stockage Azure 
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, ouvrez un autre onglet dans la fenêtre Microsoft Edge, accédez au [référentiel GitHub d’exemples Azure Files](https://github.com/Azure-Samples/azure-files-samples/releases), téléchargez [la version la plus récente du module PowerShell compressé **AzFilesHybrid.zip** et extrayez son contenu dans le dossier **C :\\Allfiles\\Labs\\02** (créez le dossier si nécessaire).
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, démarrez **Windows PowerShell ISE** en tant qu’Administrateur et, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour supprimer le flux de données alternatif **Zone.Identifier**, qui a pour valeur **3**, indiquant qu’il a été téléchargé à partir d’Internet :
+1. Dans la session Bastion pour **az140-dc-vm11**, ouvrez un autre onglet dans la fenêtre Microsoft Edge, accédez au [référentiel GitHub d’exemples Azure Files](https://github.com/Azure-Samples/azure-files-samples/releases), téléchargez [la version la plus récente du module PowerShell compressé **AzFilesHybrid.zip** et extrayez son contenu dans le dossier **C :\\Allfiles\\Labs\\02** (créez le dossier si nécessaire).
+1. Dans la session Bastion vers **az140-dc-vm11**, démarrez **Windows PowerShell ISE** en tant qu’administrateur et, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour supprimer le flux de données alternatif **Zone.Identifier**, qui a pour valeur **3**, indiquant qu’il a été téléchargé à partir d’Internet :
 
    ```powershell
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
-1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-1. Lorsque vous y êtes invité, connectez-vous avec les informations d’identification Microsoft Entra du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour définir les variables nécessaires pour exécuter le script suivant :
+1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour définir les variables nécessaires pour exécuter le script suivant :
 
    ```powershell
    $subscriptionId = (Get-AzContext).Subscription.Id
@@ -110,7 +105,7 @@ Les principales tâches de cet exercice sont les suivantes
    $storageAccountName = (Get-AzStorageAccount -ResourceGroupName $resourceGroupName)[0].StorageAccountName
    ```
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour créer un objet d’ordinateur AD DS qui représente le compte de stockage Azure que vous avez créé précédemment dans cette tâche et utilisé pour implémenter son authentification AD DS :
+1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour créer un objet d’ordinateur AD DS qui représente le compte de stockage Azure que vous avez créé précédemment dans cette tâche et utilisé pour implémenter son authentification AD DS :
 
    >**Remarque** : Si vous recevez une erreur lors de l’exécution de ce bloc de script, vérifiez que vous êtes dans le même répertoire que le script CopyToPSPath.ps1. Selon la façon dont les fichiers ont été extraits précédemment dans ce laboratoire, ils peuvent se trouver dans un sous-dossier nommé AzFilesHybrid. Dans le contexte PowerShell, remplacez les répertoires pour accéder au dossier à l’aide de **cd AzFilesHybrid**.
 
@@ -125,7 +120,7 @@ Les principales tâches de cet exercice sont les suivantes
       -OrganizationalUnitDistinguishedName 'OU=WVDInfra,DC=adatum,DC=com'
    ```
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour vérifier que l’authentification AD DS est activée sur le compte de stockage Azure :
+1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour vérifier que l’authentification AD DS est activée sur le compte de stockage Azure :
 
    ```powershell
    $storageaccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
@@ -144,36 +139,45 @@ Les principales tâches de cet exercice sont les suivantes
    AzureStorageSid   : S-1-5-21-1102940778-2483248400-1820931179-2109
    ```
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, basculez vers la fenêtre Microsoft Edge affichant le portail Azure, dans le panneau affichant le compte de stockage, sélectionnez **Partages de fichiers** et vérifiez que le paramètre **Accès basé sur l’identité** est **Configuré**.
+1. Dans la session Bastion pour **az140-dc-vm11**, basculez vers la fenêtre Microsoft Edge affichant le portail Azure, dans le panneau affichant le compte de stockage, sélectionnez **Partages de fichiers** et vérifiez que le paramètre **Accès basé sur l’identité** est **Configuré**.
 
    >**Remarque** : Vous devrez peut-être actualiser la page du navigateur pour que la modification soit reflétée dans le portail Azure.
 
 #### Tâche 4 : Configurer les autorisations basées sur le RBAC pour Azure Files
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, dans le panneau affichant les propriétés du compte de stockage créé précédemment dans cet exercice, dans le menu vertical de gauche, dans la section **Stockage des données**, sélectionnez **Partages de fichiers**.
+1. Dans la session Bastion pour **az140-dc-vm11**, dans la fenêtre Microsoft Edge affichant le Portail Azure, dans le panneau affichant les propriétés du compte de stockage créé précédemment dans cet exercice, dans le menu vertical de gauche, dans la section **Stockage des données**, sélectionnez **Partages de fichiers**.
 1. Dans le panneau **Partages de fichiers**, dans la liste des partages, sélectionnez l’entrée **az140-22-profiles**.
 1. Dans le panneau **az140-22-profiles**, dans le menu vertical de gauche, sélectionnez **Access Control (IAM)**.
 1. Dans le panneau **Contrôle d’accès (IAM)** du compte de stockage, sélectionnez **+ Ajouter** et, dans le menu déroulant, sélectionnez **Ajouter une attribution de rôle**, 
-1. Dans le panneau **Ajouter une attribution de rôle**, spécifiez les paramètres suivants et sélectionnez **Vérifier + attribuer** :
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Rôle**, spécifiez les paramètres suivants et sélectionnez **Suivant** :
 
    |Paramètre|Valeur|
    |---|---|
-   |Role|**Contributeur de partage SMB de données de fichier de stockage**|
-   |Attribuer l’accès à|**Utilisateur, groupe ou principal de service**|
-   |Sélectionnez|**az140-wvd-users**|
+   |Rôle de fonction de travail|**Contributeur de partage SMB de données de fichier de stockage**|
 
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Membres**, cliquez sur **+ Sélectionner des membres**, spécifiez les paramètres suivants, puis cliquez sur **Sélectionner**. 
+
+   |Paramètre|Valeur|
+   |---|---|
+   |Select|**az140-wvd-users**|
+1. Dans le panneau **Ajouter une attribution de rôle**, sélectionnez **Vérifier + attribuer**, puis **Vérifier + attribuer**.
 1. Dans le panneau **Contrôle d’accès (IAM)** du compte de stockage, sélectionnez **+ Ajouter** et, dans le menu déroulant, sélectionnez **Ajouter une attribution de rôle**, 
-1. Dans le panneau **Ajouter une attribution de rôle**, spécifiez les paramètres suivants et sélectionnez **Vérifier + attribuer** :
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Rôle**, spécifiez les paramètres suivants et sélectionnez **Suivant** :
 
    |Paramètre|Valeur|
    |---|---|
-   |Role|**Contributeur élevé de partage SMB de données de fichier de stockage**|
-   |Attribuer l’accès à|**Utilisateur, groupe ou principal de service**|
-   |Sélectionnez|**az140-wvd-admins**|
+   |Rôle de fonction de travail|**Contributeur élevé de partage SMB de données de fichier de stockage**|
+
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Membres**, cliquez sur **+ Sélectionner des membres**, spécifiez les paramètres suivants, puis cliquez sur **Sélectionner**. 
+
+   |Paramètre|Valeur|
+   |---|---|
+   |Select|**az140-wvd-admins**|
+1. Dans le panneau **Ajouter une attribution de rôle**, sélectionnez **Vérifier + attribuer**, puis **Vérifier + attribuer**.
 
 #### Tâche 5 : Configurer les autorisations du système de fichiers Azure Files
 
-1. Dans la session Bureau à distance pour **az140-dc-vm11**, basculez vers la fenêtre **Administrateur : Windows PowerShell ISE** et, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour créer une variable référençant le nom et la clé du compte de stockage que vous avez créé précédemment dans cet exercice :
+1. Dans la session Bastion vers **az140-dc-vm11**, basculez vers la fenêtre **Administrateur : Windows PowerShell ISE** et, à partir du volet de script **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour créer une variable référençant le nom et la clé du compte de stockage que vous avez créé précédemment dans cet exercice :
 
    ```powershell
    $resourceGroupName = 'az140-22-RG'

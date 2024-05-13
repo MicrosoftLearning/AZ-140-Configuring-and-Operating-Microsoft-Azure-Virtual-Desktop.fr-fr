@@ -40,7 +40,8 @@ Vous devez configurer la mise à l’échelle automatique des hôtes de session 
 Les principales tâches de cet exercice sont les suivantes
 
 1. Préparer la mise à l’échelle des hôtes de session Azure Virtual Desktop
-2. Créer un plan de mise à l’échelle des hôtes de session Azure Virtual Desktop
+2. Configurer les diagnostics pour suivre la mise à l’échelle automatique d’Azure Virtual Desktop
+3. Créer un plan de mise à l’échelle des hôtes de session Azure Virtual Desktop
 
 #### Tâche 1 : Préparer la mise à l’échelle des hôtes de session Azure Virtual Desktop
 
@@ -65,22 +66,59 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans le portail Azure, recherchez et sélectionnez **Abonnements**, puis dans la liste des abonnements, sélectionnez celui qui contient les ressources Azure Virtual Desktop. 
 1. Dans la page des abonnements, sélectionnez **Contrôle d’accès (IAM)**.
 1. Dans la page **Contrôle d’accès (IAM)**, dans la barre d’outils, sélectionnez le bouton **+ Ajouter**, puis sélectionnez **Ajout de l’attribution de rôle** dans le menu déroulant.
-1. Sous l’onglet **Rôle** de l’Assistant **Ajout de l’attribution de rôle**, recherchez et sélectionnez le rôle **Contributeur de mise hors tension de la virtualisation de bureau**, puis cliquez sur **Suivant**.
-1. Sous l’onglet **Membres** de l’Assistant **Ajout de l’attribution de rôle**, sélectionnez **+ Sélectionner des membres**, recherchez et sélectionnez **Azure Virtual Desktop** ou **Windows Virtual Desktop**, cliquez sur **Sélectionner**, puis sur **Suivant**.
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Rôle**, spécifiez les paramètres suivants et sélectionnez **Suivant** :
+
+   |Paramètre|Valeur|
+   |---|---|
+   |Rôle de fonction de travail|**Contributeur de mise hors tension de la virtualisation de bureau**|
+
+1. Dans le panneau **Ajouter une attribution de rôle**, sous l’onglet **Membres**, cliquez sur **+ Sélectionner des membres**, spécifiez les paramètres suivants, puis cliquez sur **Sélectionner**. 
+
+   |Paramètre|Valeur|
+   |---|---|
+   |Select|**Azure Virtual Desktop** ou **Windows Virtual Desktop**|
+
+1. Dans le panneau **Ajouter une attribution de rôle**, sélectionnez **Vérifier + attribuer**
 
    >**Remarque** : La valeur dépend du moment où le fournisseur de ressources **Microsoft.DesktopVirtualization** a été inscrit pour la première fois dans votre locataire Azure.
 
 1. Sous l’onglet **Vérifier + attribuer**, sélectionnez **Vérifier + attribuer**.
 
-#### Tâche 2 : Créer un plan de mise à l’échelle des hôtes de session Azure Virtual Desktop
+#### Tâche 2 : Configurer les diagnostics pour suivre la mise à l’échelle automatique d’Azure Virtual Desktop
+
+1. Sur l’ordinateur de labo, dans la fenêtre de navigateur web affichant le portail Azure, ouvrez une session **PowerShell** dans le volet **Cloud Shell**.
+
+   >**Remarque** : Vous allez utiliser un compte Stockage Azure pour stocker les événements de mise à l’échelle automatique. Vous pouvez le créer directement dans le portail Azure ou utiliser Azure PowerShell, comme illustré dans cette tâche.
+
+1. Dans la session PowerShell du volet Cloud Shell, exécutez les commandes suivantes pour créer un compte Stockage Azure :
+
+   ```powershell
+   $resourceGroupName = 'az140-51-RG'
+   $location = (Get-AzResourceGroup -ResourceGroupName 'az140-11-RG').Location
+   New-AzResourceGroup -Location $location -Name $resourceGroupName
+   $suffix = Get-Random
+   $storageAccountName = "az140st51$suffix"
+   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
+   ```
+
+   >**Remarque** : Attendez que le compte de stockage soit provisionné.
+
+1. Dans la fenêtre de navigateur affichant le portail Azure, fermez le volet Cloud Shell.
+1. Sur votre ordinateur de labo, dans le navigateur affichant le portail Azure, accédez à la page du pool d’hôtes **az140-21-hp1**.
+1. Dans la page **az140-21-hp1**, sélectionnez **Paramètres de diagnostic**, puis **+ Ajouter un paramètre de diagnostic**.
+1. Dans la page **Paramètres de diagnostic**, dans la zone de texte **Nom du paramètre de diagnostic**, entrez **az140-51-scaling-plan-diagnostics**, puis dans la section **Groupes de catégories**, sélectionnez **Journaux de mise à l’échelle automatique pour les pools de hôte groupé**. 
+1. Dans la même page, dans la section **Détails de la destination**, sélectionnez **Archiver dans un compte de stockage**, puis dans la liste déroulante **Compte de stockage**, sélectionnez le nom du compte de stockage qui commence par le préfixe **az140st51**.
+1. Sélectionnez **Enregistrer**.
+
+#### Tâche 3 : Créer un plan de mise à l’échelle des hôtes de session Azure Virtual Desktop
 
 1. Sur votre ordinateur de labo, dans le navigateur affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**. 
 1. Dans la page **Azure Virtual Desktop**, sélectionnez **Plans de mise à l’échelle**, puis **+ Créer**.
-1. Sous l’onglet **Informations de base** de l’Assistant **Création d’un plan de mise à l’échelle**, spécifiez les informations suivantes et sélectionnez **Prochaines planifications >** (laissez les autres valeurs par défaut) :
+1. Sous l’onglet Informations **de base** de l’Assistant **Création d’un plan de mise à l’échelle**, spécifiez les informations suivantes et sélectionnez **Suivant : Planifications >** (laissez d’autres personnes avec leurs valeurs par défaut) :
 
    |Paramètre|Valeur|
    |---|---|
-   |Groupe de ressources|nom **az140-51-RG** d’un nouveau groupe de ressources|
+   |Groupe de ressources|**az140-51-RG**|
    |Nom|**az140-51-scaling-plan**|
    |Emplacement|la même région Azure dans laquelle vous avez déployé les hôtes de session dans les labos précédents|
    |Nom convivial|**az140-51 scaling plan**|
@@ -154,35 +192,10 @@ Les principales tâches de cet exercice sont les suivantes
 
 Les principales tâches de cet exercice sont les suivantes
 
-1. Configurer les diagnostics pour suivre la mise à l’échelle automatique d’Azure Virtual Desktop
 1. Vérifier la mise à l’échelle automatique des hôtes de session Azure Virtual Desktop
 
-#### Tâche 1 : Configurer les diagnostics pour suivre la mise à l’échelle automatique d’Azure Virtual Desktop
 
-1. Sur l’ordinateur de labo, dans la fenêtre de navigateur web affichant le portail Azure, ouvrez une session **PowerShell** dans le volet **Cloud Shell**.
-
-   >**Remarque** : Vous allez utiliser un compte Stockage Azure pour stocker les événements de mise à l’échelle automatique. Vous pouvez le créer directement dans le portail Azure ou utiliser Azure PowerShell, comme illustré dans cette tâche.
-
-1. Dans la session PowerShell du volet Cloud Shell, exécutez les commandes suivantes pour créer un compte Stockage Azure :
-
-   ```powershell
-   $resourceGroupName = 'az140-51-RG'
-   $location = (Get-AzResourceGroup -ResourceGroupName $resourceGroupName).Location
-   $suffix = Get-Random
-   $storageAccountName = "az140st51$suffix"
-   New-AzStorageAccount -Location $location -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName Standard_LRS
-   ```
-
-   >**Remarque** : Attendez que le compte de stockage soit provisionné.
-
-1. Dans la fenêtre de navigateur affichant le portail Azure, fermez le volet Cloud Shell.
-1. Sur votre ordinateur de labo, dans le navigateur affichant le portail Azure, accédez à la page du plan de mise à l’échelle que vous avez créé dans l’exercice précédent.
-1. Dans la page **az140-51-scaling-plan**, sélectionnez **Paramètres de diagnostic**, puis **+ Ajouter un paramètre de diagnostic**.
-1. Dans la page **Paramètres de diagnostic**, dans la zone de texte **Nom du paramètre de diagnostic**, entrez **az140-51-scaling-plan-diagnostics**, puis dans la section **Groupes de catégories**, sélectionnez **allLogs**. 
-1. Dans la même page, dans la section **Détails de la destination**, sélectionnez **Archiver dans un compte de stockage**, puis dans la liste déroulante **Compte de stockage**, sélectionnez le nom du compte de stockage qui commence par le préfixe **az140st51**.
-1. Sélectionnez **Enregistrer**.
-
-#### Tâche 2 : Vérifier la mise à l’échelle automatique des hôtes de session Azure Virtual Desktop
+#### Tâche 1 : Vérifier la mise à l’échelle automatique des hôtes de session Azure Virtual Desktop
 
 1. Sur l’ordinateur de labo, dans la fenêtre de navigateur web affichant le portail Azure, ouvrez une session **PowerShell** dans le volet **Cloud Shell**.
 1. À partir de la session PowerShell du volet Cloud Shell, exécutez la commande suivante pour démarrer les machines virtuelles Azure hôtes de session Azure Virtual Desktop que vous utiliserez dans ce labo :
@@ -197,18 +210,18 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la page **az140-21-hp1**, sélectionnez **Hôtes de session**.
 1. Attendez qu’au moins un hôte de session soit répertorié avec l’état **Arrêt**.
 
-   >**Remarque** : Vous devrez probablement actualiser la page pour mettre à jour l’état des hôtes de session.
+   > **Remarque** : Vous devrez probablement actualiser la page pour mettre à jour l’état des hôtes de session.
 
-   >**Remarque** : Si tous les hôtes de session sont toujours disponibles, revenez à la page **az140-51-scaling-plan** et réduisez la valeur du **Pourcentage minimal d’hôtes (%)** du paramètre **Ralentissement**.
+   > **Remarque** : Si tous les hôtes de session sont toujours disponibles après 15 minutes, revenez à la page **az140-51-scaling-plan** et réduisez la valeur du **Pourcentage minimal d’hôtes (%)** du paramètre **Ralentissement**.
 
-   >**Remarque** : Une fois que l’état d’un ou plusieurs hôtes de session a changé, les journaux de mise à l’échelle automatique devraient être disponibles dans le compte Stockage Azure. 
+   > **Remarque** : Une fois que l’état d’un ou plusieurs hôtes de session a changé, les journaux de mise à l’échelle automatique devraient être disponibles dans le compte Stockage Azure. 
 
 1. Dans le portail Azure, recherchez et sélectionnez **Comptes de stockage**, puis dans la page **Comptes de stockage**, sélectionnez l’entrée représentant le compte de stockage créé précédemment dans cet exercice (dont le nom commence par le préfixe **az140st51**).
 1. Dans la page des comptes de stockage, sélectionnez **Conteneurs**.
-1. Dans la liste des conteneurs, sélectionnez **insights-logs-autoscale**.
-1. Dans la page **insights-logs-autoscale**, parcourez la hiérarchie des dossiers jusqu’à atteindre l’entrée représentant un blob au format JSON stocké dans le conteneur.
+1. Dans la liste des conteneurs, sélectionnez **insights-logs-autoscaleevaluationpooled**.
+1. Dans la page **insights-logs-autoscaleevaluationpooled**, parcourez la hiérarchie des dossiers jusqu’à atteindre l’entrée représentant un blob au format JSON stocké dans le conteneur.
 1. Sélectionnez l’entrée du blob, sélectionnez l’icône des points de suspension à l’extrême droite de la page, puis dans le menu déroulant, sélectionnez **Télécharger**.
-1. Sur votre ordinateur de labo, ouvrez le blob téléchargé dans un éditeur de texte de votre choix et examinez son contenu. Vous devriez y trouver des références aux événements de mise à l’échelle automatique. 
+1. Sur votre ordinateur de labo, ouvrez le blob téléchargé dans un éditeur de texte de votre choix et examinez son contenu. Vous devriez être en mesure de trouver des références aux événements de mise à l’échelle automatique. Dans ce cas, nous pouvons rechercher « désalloué » pour faciliter l’identification.
 
    >**Remarque** : Voici un exemple de contenu de blob qui inclut des références aux événements de mise à l’échelle automatique :
 
@@ -219,7 +232,7 @@ Les principales tâches de cet exercice sont les suivantes
    time "2023-03-26T19:35:46.0074598Z"
    resourceId   "/SUBSCRIPTIONS/AAAAAAAE-0000-1111-2222-333333333333/RESOURCEGROUPS/AZ140-51-RG/PROVIDERS/MICROSOFT.DESKTOPVIRTUALIZATION/SCALINGPLANS/AZ140-51-SCALING-PLAN"
    operationName    "ScalingEvaluationSummary"
-   category "Autoscale"
+   category "AutoscaleEvaluationPooled"
    resultType   "Succeeded"
    level    "Informational"
    correlationId    "ddd3333d-90c2-478c-ac98-b026d29e24d5"
