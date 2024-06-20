@@ -321,13 +321,19 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Vous devrez peut-être attendre trois à cinq minutes avant qu’une sortie de l’installation du module Az s’affiche. Vous devrez peut-être également attendre cinq minutes **après** l’arrêt de la sortie. Ce comportement est normal.
 
-1. Depuis la console **Administrateur : Console Windows PowerShell ISE** , exécutez la commande suivante pour vous connecter à votre abonnement Azure :
+1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Lorsque vous y êtes invité, fournissez les informations d’identification du compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
+1. Lorsque vous y êtes invité, fournissez les informations d’identification du compte d’utilisateur Entra ID avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
+1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour désactiver Gestionnaire de compte Windows :
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour récupérer la propriété ID du locataire Microsoft Entra associé à votre abonnement Azure :
 
    ```powershell
