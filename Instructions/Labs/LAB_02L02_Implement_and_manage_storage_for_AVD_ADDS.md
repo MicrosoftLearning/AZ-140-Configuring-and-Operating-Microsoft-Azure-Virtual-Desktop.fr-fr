@@ -97,19 +97,19 @@ Les principales tâches de cet exercice sont les suivantes
    Get-ChildItem -Path C:\Allfiles\Labs\02 -File -Recurse | Unblock-File
    ```
 
+1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour désactiver Gestionnaire de compte Windows :
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Lorsque vous y êtes invité, fournissez les informations d’identification du compte d’utilisateur Entra ID avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo.
-1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour désactiver Gestionnaire de compte Windows :
-
-   ```powershell
-   Update-AzConfig -EnableLoginByWam $false
-   ```
-   
+1. Lorsque vous y êtes invité, fournissez les informations d’identification du compte d’utilisateur Entra ID avec le rôle Propriétaire dans l’abonnement que vous utilisez dans ce labo. 
 1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez ce qui suit pour définir les variables nécessaires pour exécuter le script suivant :
 
    ```powershell
