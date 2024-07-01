@@ -82,6 +82,12 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Vous devrez peut-être attendre trois à cinq minutes avant qu’une sortie de l’installation du module Az s’affiche. Vous devrez peut-être également attendre cinq minutes **après** l’arrêt de la sortie. Ce comportement est normal.
 
+1. Depuis la console **Administrateur : Console Windows PowerShell ISE**, exécutez la commande suivante pour désactiver Gestionnaire de compte Windows :
+
+   ```powershell
+   Update-AzConfig -EnableLoginByWam $false
+   ```
+
 1. Depuis la console **Administrateur : Windows PowerShell ISE**, exécutez la commande suivante pour vous connecter à votre abonnement Azure :
 
    ```powershell
