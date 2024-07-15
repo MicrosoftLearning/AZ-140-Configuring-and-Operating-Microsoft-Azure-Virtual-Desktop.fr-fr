@@ -95,7 +95,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Préfixe de nom|**az140-21-p1**|
    |Emplacement des machines virtuelles|nom de la région Azure dans laquelle vous avez déployé des ressources dans le premier exercice de ce labo|
    |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
-   |Type de sécurité|**Standard**|
+   |Type de sécurité|**Lancement fiable des machines virtuelles**|
    |Image|**Windows 11 Entreprise multisession + Microsoft 365 Apps, version 22H2**|
    |Taille de la machine virtuelle|**Standard D2s v3**|
    |Nombre d'ordinateurs virtuels|**2**|
