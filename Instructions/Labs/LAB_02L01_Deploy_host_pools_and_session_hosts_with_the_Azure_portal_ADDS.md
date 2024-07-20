@@ -113,12 +113,12 @@ Les principales tâches de cet exercice sont les suivantes
    |Type de machine virtuelle|Machine virtuelle Azure|
    |Emplacement des machines virtuelles|nom de la région Azure dans laquelle vous avez déployé les ressources au cours du labo précédent|
    |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
-   |Type de sécurité|**Standard**|
+   |Type de sécurité|**Lancement fiable des machines virtuelles**|
    |Image|**Windows 11 Entreprise multisession + Microsoft 365 Apps, version 22H2**|
    |Taille de la machine virtuelle|**Standard D2s v3**|
    |Nombre d'ordinateurs virtuels|**2**|
    |Type de disque du système d’exploitation|**SSD Standard**|
-   |Taille du disque de système d’exploitation|**Redimensionner en 128 Go (P10)**|
+   |Taille du disque de système d’exploitation|**Taille par défaut (128 Gio)**|
    |Diagnostics de démarrage|**Activer avec le compte de stockage managé (recommandé)**|
    |Réseau virtuel|**az140-adds-vnet11**|
    |Sous-réseau|**hp1-Subnet (10.0.1.0/24)**|
@@ -160,11 +160,11 @@ Les principales tâches de cet exercice sont les suivantes
    |Préfixe de nom|**az140-21-p1**|
    |Emplacement des machines virtuelles|nom de la région Azure dans laquelle vous avez déployé les deux premières machines virtuelles hôtes de session|
    |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
-   |Type de sécurité|**Standard**|
+   |Type de sécurité|**Lancement fiable des machines virtuelles**|
    |Image|**Windows 11 Entreprise multisession + Microsoft 365 Apps, version 22H2**|
    |Nombre d'ordinateurs virtuels|**1**|
    |Type de disque du système d’exploitation|**SSD Standard**|
-   |Taille du disque de système d’exploitation|**Taille par défaut (128 Go)**|
+   |Taille du disque de système d’exploitation|**Taille par défaut (128 Gio)**|
    |Diagnostics de démarrage|**Activer avec le compte de stockage managé (recommandé)**|
    |Réseau virtuel|**az140-adds-vnet11**|
    |Sous-réseau|**hp1-Subnet (10.0.1.0/24)**|
