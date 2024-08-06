@@ -84,7 +84,8 @@ Les principales tâches de cet exercice sont les suivantes
    |Paramètre|Valeur|
    |---|---|
    |Nom|**hp1-Subnet**|
-   |Plage d’adresses de sous-réseau|**10.0.1.0/24**|
+   |Adresse de début|**10.0.1.0**|
+   |Taille|**/24 (256 adresses)**|
 
 #### Tâche 2 : Déployer un pool d’hôtes Azure Virtual Desktop
 
@@ -102,6 +103,8 @@ Les principales tâches de cet exercice sont les suivantes
    |Type de pool d’hôtes|**Groupé**|
    |Algorithme d’équilibrage de charge|**À largeur prioritaire**|
    |Limite de session maximale|**12**|
+
+   > **Remarque** : si un utilisateur a à la fois des applications RemoteApp et de bureau publiées, le type de groupe d’applications préféré détermine laquelle des deux apparaîtra dans son flux.
 
 1. Sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Espace de travail >** (laissez d’autres paramètres avec leurs valeurs par défaut) :
 
@@ -362,27 +365,41 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : Sinon, dans la fenêtre client **Bureau à distance**, sélectionnez **s’abonner avec l’URL**, dans le volet **s’abonner à un espace de travail**, dans l’URL **e-mail ou espace de travail**, tapez **https://client.wvd.microsoft.com/api/arm/feeddiscovery**, sélectionnez **Suivant** et, une fois que vous y êtes invité, connectez-vous avec les informations d’identification **aduser1** (à l’aide de son attribut userPrincipalName comme nom d’utilisateur et mot de passe que vous avez définis lors de la création de ce compte). 
 
-1. Vérifiez que la page **Bureau à distance** affiche la liste des applications incluses dans les groupes d’applications publiés dans l’espace de travail et associées au compte d’utilisateur **aduser1** via son appartenance au groupe. 
+1. Vérifiez que la page **Bureau à distance** affiche la session SessionDesktop incluse dans le groupe d’applications az140-21-hp1-DAG généré automatiquement et publié dans l’espace de travail et associé au compte d’utilisateur **aduser1** via son appartenance au groupe. 
+
+   > **Remarque** : ce comportement est normal, car le **type de groupe d’applications préféré** du pool d’hôtes est actuellement défini sur **Bureau**.
 
 #### Tâche 3 : Tester des applications Azure Virtual Desktop
 
-1. Dans la session Bastion sur **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, dans la liste des applications, double-cliquez sur **Invite de commandes** et vérifiez qu’elle lance une fenêtre **d’invite de commandes**. Lorsque vous êtes invité à s’authentifier, tapez le mot de passe que vous définissez lors de la création du compte d’utilisateur **aduser1**, cochez la case **Me rappeler**, puis sélectionnez **OK**.
+1. Dans la session Bastion sur **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, dans la liste des applications, double-cliquez sur **SessionDesktop** et assurez-vous qu’il ouvre une session Bureau à distance. 
 
    > **Remarque** : Au départ, le démarrage de l’application peut prendre quelques minutes, mais par la suite, le démarrage de l’application doit être beaucoup plus rapide.
 
    > **Remarque** : Si vous recevez l’invite de connexion **Bienvenue dans Microsoft Teams**, refermez-la.
 
+1. Dans la session **Session de Bureau**, cliquez avec le bouton droit sur **Démarrer** et sélectionnez **Exécuter**. Dans la zone de texte **Ouvrir** de la boîte de dialogue **Exécuter**, tapez **cmd** et sélectionnez **OK**. 
+1. Dans la session **Bureau par défaut**, à l’invite de commandes, tapez **hostname** et appuyez sur la touche **Entrée** pour afficher le nom de l’ordinateur sur lequel la session Bureau à distance s’exécute.
+1. Vérifiez que le nom affiché est **az140-21-p1-0**, **az140-21-p1-1** ou **az140-21-p1-2**.
+1. À l’invite de commandes, tapez **logoff**, puis appuyez sur la touche **Entrée** pour vous déconnecter de la session de Bureau.
+
+   > **Remarque** : ensuite, vous allez modifier le **type de groupe d’applications préféré** en le définissant sur **RemoteApp**.
+
+1. À partir de votre ordinateur de labo, basculez à la session Bastion vers **az140-dc-vm11**.
+1. Dans la session Bastion pour **az140-dc-vm11**, dans la fenêtre du navigateur web affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop** et, dans le panneau **Azure Virtual Desktop**, dans la barre de menus verticale, dans la **section Gérer**, sélectionnez **pools d’hôtes**.
+1. Dans le panneau **Azure Virtual Desktop \| Pools d’hôtes**, dans la liste des pools d’hôtes, sélectionnez **az140-21-hp1**.
+1. Dans le panneau **az140-21-hp1**, dans la barre de menus verticale, dans la **section Paramètres**, sélectionnez **Propriétés**. Dans le **type de groupe d’applications préféré**, sélectionnez **Application distante**, puis **Enregistrer**. 
+1. À partir de votre ordinateur de labo, basculez vers la session Bastion sur **az140-dc-vm11**.
+1. Dans la session Bastion sur **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, sélectionnez le symbole de points de suspension dans le coin supérieur droit et, dans le menu déroulant, sélectionnez **Actualiser**.
+1. Vérifiez que la page **Bureau à distance** affiche les applications individuelles incluses dans les deux groupes d’applications que vous avez créés et publiés dans l’espace de travail, qui sont également associes au compte d’utilisateur **aduser1** via son appartenance au groupe. 
+
+   > **Remarque** : ce comportement est normal, car le **type de groupe d’applications préféré** du pool d’hôtes est désormais défini sur **RemoteApp**.
+
+1. Dans la session Bastion sur **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, dans la liste des applications, double-cliquez sur **Invite de commandes** et vérifiez qu’elle lance une fenêtre **d’invite de commandes**. Lorsque vous êtes invité à s’authentifier, tapez le mot de passe que vous définissez lors de la création du compte d’utilisateur **aduser1**, cochez la case **Me rappeler**, puis sélectionnez **OK**.
 1. À l’invite de commandes, tapez **nom d’hôte**, puis appuyez sur la touche **Entrée** pour afficher le nom de l’ordinateur sur lequel l’invite de commandes est en cours d’exécution.
 
    > **Remarque** : Vérifiez que le nom affiché est **az140-21-p1-0**, **az140-21-p1-1** ou **az140-21-p1-2**, au lieu de **az140-cl-vm11**.
 
 1. À l’invite de commandes, tapez **logoff**, puis appuyez sur l'**Entrée** touche pour vous déconnecter de la session d’application distante actuelle.
-1. Dans la session Bastion sur **az140-cl-vm11**, dans la fenêtre du client **Bureau à distance**, dans la liste des applications, double-cliquez sur **SessionDesktop** et assurez-vous qu’il ouvre une session Bureau à distance. 
-1. Dans la session **Session de Bureau**, cliquez avec le bouton droit sur **Démarrer** et sélectionnez **Exécuter**. Dans la zone de texte **Ouvrir** de la boîte de dialogue **Exécuter**, tapez **cmd** et sélectionnez **OK**. 
-1. Dans la session **Bureau par défaut**, à l’invite de commandes, tapez **hostname** et appuyez sur la touche **Entrée** pour afficher le nom de l’ordinateur sur lequel la session Bureau à distance s’exécute.
-1. Vérifiez que le nom affiché est **az140-21-p1-0**, **az140-21-p1-1** ou **az140-21-p1-2**.
-1. À l’invite de commandes, tapez **logoff**, puis appuyez sur la touche **Entrée** pour vous déconnecter de la session de Bureau.
-1. Dans la session Bastion pour **az140-cl-vm11**, déconnectez-vous de la session, puis sélectionnez **Fermer**.
 
 ### Exercice 3 : Arrêter et libérer les machines virtuelles Azure provisionnées dans le labo
 
