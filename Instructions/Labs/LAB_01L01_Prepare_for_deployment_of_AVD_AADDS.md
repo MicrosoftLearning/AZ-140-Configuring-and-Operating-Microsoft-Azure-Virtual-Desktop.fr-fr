@@ -195,7 +195,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Nom|**az140-aadds-vnet11a**|
    |Plage d’adresses|**10.10.0.0/16**|
    |Nom du sous-réseau|**aadds-Subnet**|
-   |Nom du sous-réseau|**10.10.0.0/24**|
+   |Plage d’adresses|**10.10.0.0/24**|
 
 1. De retour sous l’onglet **Mise en réseau** du panneau **Créer un réseau virtuel**, sélectionnez **Suivant** (conservez les autres avec leurs valeurs existantes).
 1. Sous l’onglet **Administration** du panneau **Créer Microsoft Entra Domain Services**, acceptez les paramètres par défaut et sélectionnez **Suivant**.
