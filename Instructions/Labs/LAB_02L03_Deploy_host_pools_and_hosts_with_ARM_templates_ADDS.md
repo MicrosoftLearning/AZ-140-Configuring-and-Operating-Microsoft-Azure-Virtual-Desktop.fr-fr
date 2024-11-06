@@ -51,7 +51,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. À partir de votre ordinateur de labo, démarrez un navigateur web, accédez au [Portail Azure](https://portal.azure.com), puis connectez-vous en fournissant des informations d’identification d’un compte d’utilisateur avec le rôle Propriétaire dans l’abonnement que vous utiliserez dans ce labo.
 1. Dans le Portail Azure, recherchez et sélectionnez **machines virtuelles** et, dans le panneau **Machines virtuelles**, sélectionnez **az140-dc-vm11**.
-1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez**Se connecter via Bastion**.
+1. Dans le panneau **az140-dc-vm11**, sélectionnez **Se connecter**, et dans le menu déroulant, sélectionnez **Se connecter via Bastion**.
 1. Lorsque vous y êtes invité, fournissez les informations d’identification suivantes et sélectionnez **Connecter** :
 
    |Paramètre|Valeur|
