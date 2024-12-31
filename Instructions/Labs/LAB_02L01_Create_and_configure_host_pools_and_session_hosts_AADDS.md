@@ -71,7 +71,7 @@ Les principales tâches de cet exercice sont les suivantes
 #### Tâche 2 : Déployer un pool d’hôtes Azure Virtual Desktop
 
 1. Dans la session Bastion sur **az140-cl-vm11a**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**. Dans le panneau **Azure Virtual Desktop**, dans le menu vertical situé à gauche, dans la section **Gérer**, sélectionnez **Pools d’hôtes**, puis dans le panneau **Azure Virtual Desktop \| Pool d’hôtes**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Machines virtuelles >** :
+1. Dans l’onglet **Informations de base** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Machines virtuelles >**  :
 
    |Paramètre|Valeur|
    |---|---|
@@ -87,7 +87,7 @@ Les principales tâches de cet exercice sont les suivantes
 
    > **Remarque** : si un utilisateur a à la fois des applications RemoteApp et de bureau publiées, le type de groupe d’applications préféré détermine laquelle des deux apparaîtra dans son flux.
 
-1. Sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants (laissez les autres avec leurs valeurs par défaut) et sélectionnez **Suivant : Espace de travail >** (remplacez l’espace réservé *<Azure_AD_domain_name>* par le nom du locataire Microsoft Entra associé à l’abonnement dans lequel vous avez déployé l’instance Microsoft Entra DS et remplacez l’espace réservé `<password>` par le mot de passe que vous avez défini lors de la création du compte aadadmin1) :
+1. Dans l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants (laissez les autres avec leurs valeurs par défaut) et sélectionnez **Suivant : Espace de travail >** (remplacez l’espace réservé *<Azure_AD_domain_name>* par le nom du locataire Microsoft Entra associé à l’abonnement dans lequel vous avez déployé l’instance Microsoft Entra DS et remplacez l’espace réservé `<password>` par le mot de passe que vous avez défini lors de la création du compte aadadmin1) :
 
    > **Remarque** : Veillez à ne pas oublier le mot de passe que vous avez utilisé. Vous en aurez besoin plus loin dans ce labo et dans les suivants.
 
@@ -134,7 +134,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans le panneau **az140-21a-hp1-DAG \| Affectations**, sélectionnez **+ Ajouter**.
 1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-apooled**, puis cliquez sur **Sélectionner**.
 1. Revenez au panneau **Azure Virtual Desktop \| Groupes d’applications** et sélectionnez **+ Créer**.
-1. Sous l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >** :
+1. Dans l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >**  :
 
    |Paramètre|Valeur|
    |---|---|
@@ -174,10 +174,10 @@ Les principales tâches de cet exercice sont les suivantes
    |Description|**Microsoft PowerPoint**|
    |Demander la ligne de commande|**Aucun**|
 
-1. De retour sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
+1. De retour dans l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
 1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-aremote-app**, puis cliquez sur **Sélectionner**.
-1. De retour sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
+1. De retour dans l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
 1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
@@ -190,7 +190,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bastion sur **az140-cl-vm11a**, dans la fenêtre du navigateur web affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**, puis dans le panneau ** Azure Virtual Desktop**, sélectionnez **Groupes d’applications**.
 1. Dans le panneau **Azure Virtual Desktop \| Groupes d’applications**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >** :
+1. Dans l’onglet **Informations de base** du panneau **Créer un groupe d’applications**, spécifiez les paramètres suivants et sélectionnez **Suivant : Applications >**  :
 
    |Paramètre|Valeur|
    |---|---|
@@ -214,10 +214,10 @@ Les principales tâches de cet exercice sont les suivantes
    |Description|**Invite de commandes Windows**|
    |Demander la ligne de commande|**Aucun**|
 
-1. De retour sous l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
+1. De retour dans l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
 1. Dans le panneau **Sélectionner des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**, sélectionnez **az140-wvd-aremote-app** et **az140-wvd-aadmins**, puis cliquez sur **Sélectionner**.
-1. De retour sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
+1. De retour dans l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Espace de travail >**.
 1. Sous l’onglet **Espace de travail** du panneau **Créer un espace de travail**, spécifiez le paramètre suivant et sélectionnez **Vérifier + créer** :
 
    |Paramètre|Valeur|
@@ -230,7 +230,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la session Bastion sur **az140-cl-vm11a**, dans la fenêtre Microsoft Edge affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**, puis dans le panneau **Azure Virtual Desktop**, sélectionnez **Espaces de travail**.
 1. Dans le panneau **Azure Virtual Desktop \| Espaces de travail**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un espace de travail**, spécifiez les paramètres suivants et sélectionnez **Suivant : Groupes d’applications >** :
+1. Dans l’onglet **Informations de base** du panneau **Créer un espace de travail**, spécifiez les paramètres suivants et sélectionnez **Suivant : Groupes d’applications >**  :
 
    |Paramètre|Valeur|
    |---|---|

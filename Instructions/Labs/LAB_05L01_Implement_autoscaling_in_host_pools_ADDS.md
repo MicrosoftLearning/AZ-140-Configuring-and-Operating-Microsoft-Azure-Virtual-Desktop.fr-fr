@@ -114,7 +114,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Sur votre ordinateur de labo, dans le navigateur affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**. 
 1. Dans la page **Azure Virtual Desktop**, sélectionnez **Plans de mise à l’échelle**, puis **+ Créer**.
-1. Sous l’onglet Informations **de base** de l’Assistant **Création d’un plan de mise à l’échelle**, spécifiez les informations suivantes et sélectionnez **Suivant : Planifications >** (laissez d’autres personnes avec leurs valeurs par défaut) :
+1. Dans l’onglet **Informations de base** de l’assistant **Créer un plan de mise à l’échelle**, spécifiez les informations suivantes et sélectionnez **Suivant : Planifications >** (laissez les autres avec leurs valeurs par défaut) :
 
    |Paramètre|Valeur|
    |---|---|
@@ -184,7 +184,7 @@ Les principales tâches de cet exercice sont les suivantes
 
    >**Remarque** : La valeur du seuil de capacité de cette phase est déterminée par la valeur du seuil de capacité du ralentissement.
 
-1. De retour sous l’onglet **Planifications** de l’Assistant **Création d’un plan de mise à l’échelle**, sélectionnez **Suivant : Attributions de pool d'hôtes >** :
+1. De retour dans l’onglet **Planifications** de l’assistant **Créer un plan de mise à l’échelle**, sélectionnez **Suivant : Affectations de pool d’hôtes >**  :
 1. Dans la page **Attributions de pool d’hôtes**, dans la liste déroulante **Sélectionner un pool d’hôtes**, sélectionnez **az140-21-hp1**, vérifiez que la case **Activer la mise à l’échelle automatique** est cochée et sélectionnez **Vérifier + créer**, puis **Créer**.
 
 

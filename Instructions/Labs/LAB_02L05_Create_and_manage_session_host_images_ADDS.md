@@ -267,7 +267,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Plage d’adresses de sous-réseau|**10.0.4.0/24**|
 
 1. Sur l’ordinateur de labo, dans le portail Azure, dans la fenêtre de navigateur web affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop**. Dans le panneau **Azure Virtual Desktop**, sélectionnez **Pools d’hôtes**, puis dans le panneau **Azure Virtual Desktop \| Pools d’hôtes**, sélectionnez **+ Créer**. 
-1. Sous l’onglet **Informations de base** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Machines virtuelles >** :
+1. Dans l’onglet **Informations de base** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Machines virtuelles >**  :
 
    |Paramètre|Valeur|
    |---|---|
@@ -295,7 +295,7 @@ Les principales tâches de cet exercice sont les suivantes
    
 1. Sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, directement sous la liste déroulante **Image**, cliquez sur le lien **Voir toutes les images**.
 1. Dans le panneau **Sélectionner une image**, sous **Autres éléments**, cliquez sur **Images partagées**, puis dans la liste des images partagées, sélectionnez **az140-25-host-image**. 
-1. De retour sous l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Espace de travail >** :
+1. De retour dans l’onglet **Machines virtuelles** du panneau **Créer un pool d’hôtes**, spécifiez les paramètres suivants et sélectionnez **Suivant : Espace de travail >**  :
 
    |Paramètre|Valeur|
    |---|---|
