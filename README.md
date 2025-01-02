@@ -1,5 +1,3 @@
-**Ce cours sera mis hors service le **30/09/2024**. Une fois le cours mis hors service, tous les référentiels GitHub seront supprimés. Merci.**
-
 # AZ-140 : Configuration et utilisation de Microsoft Azure Virtual Desktop
 
 - **[Lien vers les labos (format HTML)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**
