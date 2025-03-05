@@ -115,7 +115,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Environnement de validation|**Aucun**|
     |Type de groupe d’applications préféré|**Bureau**|
     |Type de pool d’hôtes|**Groupé**|
-    |Créer une configuration d’hôte de session|**Aucun**|
+    |Créer une configuration d’hôte de session|**Non**|
     |Algorithme d’équilibrage de charge|**À largeur prioritaire**|
 
     > **Note** : lors de l’utilisation de l’algorithme d’équilibrage de charge en largeur d’abord, le paramètre de limite de session maximale est facultatif.
@@ -144,7 +144,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Groupe de sécurité réseau|**De base**|
     |Ports d’entrée publics|**Aucun**|
     |Sélectionnez le répertoire que vous souhaitez rejoindre|**Microsoft Entra ID**|
-    |Inscrire une machine virtuelle avec Intune|**Aucun**|
+    |Inscrire une machine virtuelle avec Intune|**Non**|
     |Nom d'utilisateur|**Étudiant**|
     |Mot de passe|Toute chaîne suffisamment complexe de caractères qui sera utilisée comme mot de passe pour le compte Administrateur intégré|
     |Confirmer le mot de passe|La même chaîne de caractères que vous avez spécifiée précédemment|
@@ -155,7 +155,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     |Paramètre|Valeur|
     |---|---|
-    |Inscrire un groupe d'applications de bureau|**Aucun**|
+    |Inscrire un groupe d'applications de bureau|**Non**|
 
 1. Dans l’onglet **Examiner et créer** de la page **Créer un pool d’hôtes**, sélectionnez **Créer**.
 
@@ -188,7 +188,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Application|**Word**|
     |Nom complet|**Microsoft Word**|
     |Description|**Microsoft Word**|
-    |Demander la ligne de commande|**Aucun**|
+    |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** de la page **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
 1. Dans la page **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Vérifier + ajouter**, puis cliquez sur **Ajouter** :
@@ -199,7 +199,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Application|**Excel**|
     |Nom complet|**Microsoft Excel**|
     |Description|**Microsoft Excel**|
-    |Demander la ligne de commande|**Aucun**|
+    |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** de la page **Créer un groupe d’applications**, sélectionnez **+ Ajouter des applications**.
 1. Dans la page **Ajouter une application**, spécifiez les paramètres suivants et sélectionnez **Vérifier + ajouter**, puis cliquez sur **Ajouter** :
@@ -210,7 +210,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Application|**PowerPoint**|
     |Nom complet|**Microsoft PowerPoint**|
     |Description|**Microsoft PowerPoint**|
-    |Demander la ligne de commande|**Aucun**|
+    |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** de la page **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations >**.
 1. Dans l’onglet **Affectations** de la page **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
@@ -220,7 +220,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     |Paramètre|Valeur|
     |---|---|
-    |Inscrire le groupe d'applications|**Aucun**|
+    |Inscrire le groupe d'applications|**Non**|
 
 1. Dans l’onglet **Examiner et créer** de la page **Créer un groupe d’applications**, sélectionnez **Créer**.
 
@@ -267,7 +267,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     |Paramètre|Valeur|
     |---|---|
-    |Inscrire le groupe d'applications|**Aucun**|
+    |Inscrire le groupe d'applications|**Non**|
 
 1. Dans l’onglet **Examiner et créer** de la page **Créer un groupe d’applications**, sélectionnez **Créer**.
 
@@ -313,4 +313,4 @@ Les principales tâches de cet exercice sont les suivantes
 1. De retour sur la page **Contrôle d’accès (IAM) az140-21e-RG \|**, sélectionnez **+ Ajouter** puis, dans le menu déroulant, sélectionnez **Ajouter une attribution de rôle**.
 1. Dans l’onglet **Rôle** de la page **Ajouter une attribution de rôle**, vérifiez que l’onglet **Rôles de fonction de tâche** est sélectionné, dans la zone de texte de recherche, entrez **Connexion de l’administrateur aux machines virtuelles**, dans la liste des résultats, sélectionnez **Connexion de l’administrateur aux machines virtuelles**, puis sélectionnez **Suivant**.
 1. Dans l’onglet **Membres** de la page **Ajouter une attribution de rôle**, vérifiez que l’option **Utilisateur, groupe ou principal de service** est sélectionnée, cliquez sur **+ Sélectionner des membres**, dans le volet **Sélectionner des membres**, recherchez le groupe **AVD-DAG** que vous avez identifié dans la première tâche de cet exercice, puis cliquez sur **Sélectionner**.
-1. De retour dans l’onglet **Membres** de la page **Ajouter une attribution de rôle**, sélectionnez **Vérifier + attribuer**, puis **Vérifier + attribuer**. 
+1. De retour dans l’onglet **Membres** de la page **Ajouter une attribution de rôle**, définissez le **Type d’attribution** sur **Actif**, puis sélectionnez **Vérifier + attribuer**, et à nouveau **Vérifier + attribuer**. 
