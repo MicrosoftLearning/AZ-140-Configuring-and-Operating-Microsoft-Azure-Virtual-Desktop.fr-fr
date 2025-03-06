@@ -1,11 +1,3 @@
-#README
-
-We've turned off the ability to report issues directly on this repo and do not monitor PRs.
-
-Provide feedback here: https://aka.ms/provide-feedback
-
-Or, if you are a trainer with a microsoft.com email address, please create a ticket in AzDO.
-
 # AZ-140 : Configuration et utilisation de Microsoft Azure Virtual Desktop
 
 - **[Lien vers les labos (format HTML)](https://microsoftlearning.github.io/AZ-140-Configuring-and-Operating-Microsoft-Azure-Virtual-Desktop/)**
@@ -38,7 +30,9 @@ Or, if you are a trainer with a microsoft.com email address, please create a tic
 
 ## Notes
 
-**Les labos comprennent deux pistes distinctes, selon le fournisseur d’identité que vous décidez d’utiliser.**
+> **Important** : les labos ont été mis à jour pour cibler les scénarios basés sur Microsoft Entra ID relatifs à l’implémentation d’Azure Virtual Desktop (les instructions pour ce labo se trouvent dans le répertoire **Instructions** -&gt;**Labs_EntraID**). 
+
+> **Important** : les deux pistes suivantes ne sont plus mises à jour ni prises en charge (les instructions pour ce labo se trouvent dans le répertoire **Instructions** -&gt;**Labs**)
 
 - Active Directory Domain Services (AD DS). Cette piste comprend les labos suivants :
 
@@ -53,7 +47,7 @@ Or, if you are a trainer with a microsoft.com email address, please create a tic
    - LAB_04L02_Package_AVD_applications_ADDS.md
    - LAB_05L01_Implement_autoscaling_in_host_pools_ADDS.md
 
-- Azure Active Directory Domain Services (Azure AD DS). Cette piste comprend les labos suivants :
+- Microsoft Entra Domain Services (Microsoft Entra DS). Cette piste comprend les labos suivants :
 
    - LAB_01L01_Prepare_for_deployment_of_AVD_AADDS.md
    - LAB_02L01_Create_and_configure_host_pools_and_session_hosts_AADDS.md
