@@ -82,7 +82,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Groupe de sécurité réseau|**De base**|
     |Ports d’entrée publics|**Aucun**|
     |Sélectionnez le répertoire que vous souhaitez rejoindre|**Microsoft Entra ID**|
-    |Inscrire une machine virtuelle avec Intune|**Aucun**|
+    |Inscrire une machine virtuelle avec Intune|**Non**|
     |Nom d'utilisateur|**Étudiant**|
     |Mot de passe|Le même mot de passe que vous avez utilisé lors du déploiement des hôtes de session dans le labo *Déployer des pools d’hôtes et des hôtes de session à l’aide du portail Azure (Entra ID)* 
     |Confirmer le mot de passe|Le même mot de passe que vous avez spécifié précédemment|

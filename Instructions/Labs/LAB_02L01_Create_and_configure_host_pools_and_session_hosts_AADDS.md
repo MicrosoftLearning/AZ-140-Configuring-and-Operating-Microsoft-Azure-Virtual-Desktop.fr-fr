@@ -172,7 +172,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Source de l’application|**Menu Démarrer**|
    |Application|**PowerPoint**|
    |Description|**Microsoft PowerPoint**|
-   |Demander la ligne de commande|**Aucun**|
+   |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
@@ -212,7 +212,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Chemin d’accès à l’icône|**C:\Windows\system32\cmd.exe**|
    |Index d’icône|**0**|
    |Description|**Invite de commandes Windows**|
-   |Demander la ligne de commande|**Aucun**|
+   |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.

@@ -174,7 +174,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Algorithme d’équilibrage de charge|**À profondeur prioritaire**|
     |Pourcentage minimal d’hôtes actifs (%)|**10**|
     |Seuil de capacité (%)|**80**|
-    |Forcer la déconnexion des utilisateurs|**Aucun**|
+    |Forcer la déconnexion des utilisateurs|**Non**|
     |Arrêtez les machines virtuelles dans les cas suivants :|**Les machines virtuelles n’ont pas de sessions actives ou déconnectées**|
 
     > **Note** : le paramètre **Pourcentage minimal d’hôtes actifs (%)** désigne le pourcentage minimal de machines virtuelles hôtes de session auxquelles vous souhaitez accéder pour les heures de ralentissement et creuses. Par exemple, si la valeur **Pourcentage minimal d’hôtes actifs (%)** est défini sur 10 % et que le nombre total d’hôtes de session dans votre pool d’hôtes est de 3, la mise à l’échelle automatique garantit qu’au minimum 1 hôte de session est disponible pour prendre en charge des connexions utilisateur.

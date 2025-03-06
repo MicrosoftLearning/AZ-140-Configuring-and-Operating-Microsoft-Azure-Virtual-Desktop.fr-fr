@@ -227,7 +227,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Paramètre|Valeur|
     |---|---|
     |Nom du modèle|**az140-15b-imagetemplate**|
-    |Importer depuis un modèle existant|**Aucun**|
+    |Importer depuis un modèle existant|**Non**|
     |Abonnement|Nom de l’abonnement Azure que vous utilisez dans ce labo|
     |Resource group|**az140-15b-RG**|
     |Emplacement|Nom de la région Azure dans laquelle déployer votre environnement Azure Virtual Desktop|
@@ -250,7 +250,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Version de l’image de galerie|**1.0.0**|
     |Nom de la sortie d’exécution|**az140-15-image-1.0.0**|
     |Régions de réplication|Nom de la région Azure dans laquelle déployer votre environnement Azure Virtual Desktop|
-    |Exclure de la plus récente|**Aucun**|
+    |Exclure de la plus récente|**Non**|
     |Type de compte de stockage|**Standard_LRS**|
 
     > **Note** : vous pouvez utiliser la propriété **Régions de réplication** pour prendre en charge les builds multirégions. Définir l’option **Exclure de la dernière version** sur **Oui** empêcherait l’utilisation de cette version d’image lorsque **la dernière version** est spécifiée comme version de l’élément **ImageReference** lors de la création de la machine virtuelle.
@@ -354,7 +354,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Environnement de validation|**Aucun**|
     |Type de groupe d’applications préféré|**Bureau**|
     |Type de pool d’hôtes|**Groupé**|
-    |Créer une configuration d’hôte de session|**Aucun**|
+    |Créer une configuration d’hôte de session|**Non**|
     |Algorithme d’équilibrage de charge|**À largeur prioritaire**|
 
     > **Note** : lors de l’utilisation de l’algorithme d’équilibrage de charge en largeur d’abord, le paramètre de limite de session maximale est facultatif.
@@ -389,7 +389,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Groupe de sécurité réseau|**De base**|
     |Ports d’entrée publics|**Aucun**|
     |Sélectionnez le répertoire que vous souhaitez rejoindre|**Microsoft Entra ID**|
-    |Inscrire une machine virtuelle avec Intune|**Aucun**|
+    |Inscrire une machine virtuelle avec Intune|**Non**|
     |Nom d'utilisateur|**Étudiant**|
     |Mot de passe|Toute chaîne suffisamment complexe de caractères qui sera utilisée comme mot de passe pour le compte Administrateur intégré|
     |Confirmer le mot de passe|La même chaîne de caractères que vous avez spécifiée précédemment|
@@ -400,7 +400,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     |Paramètre|Valeur|
     |---|---|
-    |Inscrire un groupe d'applications de bureau|**Aucun**|
+    |Inscrire un groupe d'applications de bureau|**Non**|
 
 1. Dans l’onglet **Examiner et créer** de la page **Créer un pool d’hôtes**, sélectionnez **Créer**.
 

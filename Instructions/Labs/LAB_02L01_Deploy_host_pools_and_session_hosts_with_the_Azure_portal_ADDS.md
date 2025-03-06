@@ -60,7 +60,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la session Bastion vers **az140-dc-vm11**, à partir de la console **Administrateur : Windows PowerShell ISE** console, exécutez la commande suivante pour créer une unité d’organisation qui hébergera les objets ordinateur des hôtes Azure Virtual Desktop :
 
    ```powershell
-   New-ADOrganizationalUnit 'WVDInfra' –path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
+   New-ADOrganizationalUnit 'WVDInfra' -path 'DC=adatum,DC=com' -ProtectedFromAccidentalDeletion $false
    ```
 
 1. Depuis la console **Administrateur : Windows PowerShell ISE** console, exécutez la commande suivante pour identifier le nom d’utilisateur principal du compte **aduser1** :
@@ -236,7 +236,7 @@ Les principales tâches de cet exercice sont les suivantes
    |Source de l’application|**Menu Démarrer**|
    |Application|**PowerPoint**|
    |Description|**Microsoft PowerPoint**|
-   |Demander la ligne de commande|**Aucun**|
+   |Demander la ligne de commande|**Non**|
 
 1. De retour dans l’onglet **Applications** du panneau **Créer un groupe d’applications**, sélectionnez **Suivant : Affectations > **.
 1. Sous l’onglet **Affectations** du panneau **Créer un groupe d’applications**, sélectionnez **+ Ajouter des utilisateurs ou des groupes d’utilisateurs Microsoft Entra**.
