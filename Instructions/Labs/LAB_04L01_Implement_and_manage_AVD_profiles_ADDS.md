@@ -108,7 +108,7 @@ Les principales tâches de cet exercice sont les suivantes
    $profilesParentKey = 'HKLM:\SOFTWARE\FSLogix'
    $profilesChildKey = 'Profiles'
    $fileShareName = 'az140-22-profiles'
-   New-Item -Path $profilesParentKey -Name $profilesChildKey –Force
+   New-Item -Path $profilesParentKey -Name $profilesChildKey -Force
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
    New-ItemProperty -Path $profilesParentKey\$profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$storageAccountName.file.core.windows.net\$fileShareName"
    ```
@@ -158,7 +158,7 @@ Les principales tâches de cet exercice sont les suivantes
    $fileShareName = 'az140-22-profiles'
    foreach ($server in $servers) {
       Invoke-Command -ComputerName $server -ScriptBlock {
-         New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey –Force
+         New-Item -Path $using:profilesParentKey -Name $using:profilesChildKey -Force
          New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'Enabled' -PropertyType DWord -Value 1
          New-ItemProperty -Path $using:profilesParentKey\$using:profilesChildKey -Name 'VHDLocations' -PropertyType MultiString -Value "\\$using:storageAccountName.file.core.windows.net\$using:fileShareName"
       }

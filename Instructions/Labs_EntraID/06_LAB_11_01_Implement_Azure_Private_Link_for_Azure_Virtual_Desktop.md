@@ -354,12 +354,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : pour réduire les frais associés à l’exécution de l’environnement de labo, vous allez arrêter et libérer la machine virtuelle Azure nouvellement provisionnée.
 
-1. Basculez vers la session de console sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, dans la page **az140-111e-vm0**, sélectionnez **Vue d’ensemble**, puis, dans la barre d’outils, sélectionnez **Arrêter**.
-1. Dans la fenêtre contextuelle **Arrêter cette machine virtuelle**, cliquez sur **Oui**.
-
 #### Tâche 7 : autoriser l’accès au réseau public à un pool d’hôtes et à un espace de travail
-
-> **Note** : pour éliminer l’impact sur d’autres labos qui utilisent le même environnement Azure Virtual Desktop, vous allez rétablir les modifications appliquées dans la tâche précédente et autorisez l’accès au réseau public au pool d’hôtes et à l’espace de travail qui font partie de l’environnement Azure Virtual Desktop.
 
 1. Sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, recherchez et sélectionnez **Azure Virtual Desktop** et, dans la page **Azure Virtual Desktop**, sélectionnez **Espaces de travail**.
 1. Dans la page **Espaces de travail Azure Virtual Desktop \|**, sélectionnez **az140-21-ws1**.
