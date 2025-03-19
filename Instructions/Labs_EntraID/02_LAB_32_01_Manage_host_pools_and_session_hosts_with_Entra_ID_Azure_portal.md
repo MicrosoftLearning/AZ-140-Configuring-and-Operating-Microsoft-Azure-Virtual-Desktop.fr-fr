@@ -144,7 +144,7 @@ Les principales tâches de cet exercice sont les suivantes
     New-AzRoleAssignment @parameters
     ```
 
-1. Fermez le volet Cloud Shell.
+1. Fermez le volet Cloud Shell.
 
 #### Tâchev4 : configurer les mises à jour planifiées de l’agent
 

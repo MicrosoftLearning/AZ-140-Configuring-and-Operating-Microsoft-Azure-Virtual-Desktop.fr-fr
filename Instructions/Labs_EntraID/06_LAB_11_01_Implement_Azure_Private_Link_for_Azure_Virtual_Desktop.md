@@ -303,7 +303,7 @@ Les principales tâches de cet exercice sont les suivantes
     |---|---|
     |Source|**Adresses IP**|
     |Plages d’adresses IP/CIDR sources|Laisser inchangé (cela doit toujours contenir votre adresse IP publique)|
-    |Plages de ports source|*|
+    |Plages de ports sources|*|
     |Destination|**Any**|
     |Service|**RDP**|
     |Action|**Autoriser**|
@@ -327,7 +327,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans l’onglet **Examiner et créer** de la page **Créer une machine virtuelle**, sélectionnez **Créer**.
 
-    > **Remarque** : Attendez la fin du déploiement. Le déploiement peut prendre environ 5 minutes.
+    > **Remarque** : Attendez la fin du déploiement. Le déploiement peut prendre environ 5 minutes.
 
 1. Sur l’ordinateur de labo, dans le navigateur web affichant le portail Azure, recherchez et sélectionnez **Machines virtuelles** et, dans la page **Machines virtuelles**, sélectionnez **az140-111e-vm0**.
 1. Dans la page **az140-111e-vm0**, sélectionnez **Se connecter** et, dans le menu déroulant, sélectionnez **Se connecter**.
