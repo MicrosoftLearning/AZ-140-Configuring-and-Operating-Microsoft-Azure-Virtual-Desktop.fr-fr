@@ -85,7 +85,7 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans le Portail Azure, recherchez et sélectionnez **Abonnements**, puis, dans le panneau **Abonnements**, sélectionnez l’entrée représentant l’abonnement Azure que vous envisagez d’utiliser pour ce labo.
 1. Dans le Portail Azure, dans le panneau abonnement du menu vertical à gauche, dans la section **Paramètres**, sélectionnez **Utilisation + quotas**. 
-1. Dans le panneau  **Pass Azure - Parrainage | Utilisation + quotas** , sélectionnez les flèches déroulantes suivantes dans la barre de recherche supérieure :
+1. Sur le panneau  **Utilisation + quotas** , sélectionnez les flèches déroulantes suivantes dans la barre de recherche supérieure :
 
    |**Paramètre**|**Valeur**|
    |---|---|
