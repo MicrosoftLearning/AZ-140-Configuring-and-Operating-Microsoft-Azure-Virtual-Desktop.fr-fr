@@ -82,7 +82,7 @@ Les principales tâches de cet exercice sont les suivantes
     New-AzRoleAssignment @parameters
     ```
 
-1. Fermez le volet Cloud Shell.
+1. Fermez le volet Cloud Shell.
 
 #### Tâche 2 : arrêter et libérer tous les hôtes de session
 

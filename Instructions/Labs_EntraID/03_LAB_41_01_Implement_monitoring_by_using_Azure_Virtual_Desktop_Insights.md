@@ -97,7 +97,7 @@ Les principales tâches de cet exercice sont les suivantes
     - HostRegistration
     - AgentHealthStatus
 
-    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
+    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Passez en revue la section **Pool d’hôtes az140-21-hp1** et vérifiez que les paramètres de diagnostic sont activés pour **allLogs**.
@@ -106,7 +106,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : cela configure efficacement l’espace de travail pour **allLogs**.
 
-    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
+    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Passez en revue la section **Espace de travail az140-21-ws1** et vérifiez que les paramètres de diagnostic sont activés pour **allLogs** et qu’il ne reste pas de messages d’avertissement.
@@ -114,7 +114,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la section **Créer une DCR**, dans la liste déroulante **Destination de l’espace de travail**, sélectionnez **az140-laworkspace41e**, puis sélectionnez **Créer une règle de collecte de données**.
 1. Dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
 
-    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
+    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 
@@ -126,7 +126,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : cela associe efficacement la DCR nouvellement créée aux hôtes de session dans le pool d’hôtes **az140-21-hp1**.
 
-    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
+    > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la section **Hôtes de session dont l’extension Azure Monitor est manquante**, sélectionnez **Ajouter une extension**.
@@ -134,7 +134,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : cette opération installe efficacement l’extension Azure Monitor sur les hôtes de session dans le pool d’hôtes **az140-21-hp1**.
 
-    > **Remarque** : Attendez la fin du déploiement. Cela peut prendre environ 1 minute.
+    > **Remarque** : Attendez la fin du déploiement. Cela peut prendre environ 1 minute.
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Vérifiez qu’aucune erreur ou message d’avertissement n’est affiché. 
