@@ -233,7 +233,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : ensuite, vous allez évaluer le paramètre de seuil de capacité **Ralentissement** en ajustant sa fenêtre de temps. 
 
-1. Dans la page **Hôtes de session az140-21-hp1 \|**, dans le menu de navigation vertical, dans la section **Paramètres**, sélectionnez **Plans de mise à l’échelle**, puis, dans la page **Plans de mise à l’échelle**, sélectionnez **az140-scaleplan412e**.
+1. Sur la page **Hôtes de session az140-21-hp1 \|**, dans le menu de navigation vertical, dans la section **Gérer**, sélectionnez **Plans de mise à l’échelle**, puis, sur la page **Plans de mise à l’échelle**, sélectionnez **az140-scaleplan412e**.
 1. Dans la page **az140-scaleplan412e**, dans le menu de navigation vertical, dans la section **Paramètres**, sélectionnez **Planifications**, puis sélectionnez **week_schedule**.
 1. Dans le volet **week_schedule**, accédez à l’onglet **Ralentissement** et ajustez la valeur du paramètre **Heure de début (format 12 heures)** à n’importe quel moment entre l’**Heure de début (format 12 heures)** de la phase **Heures de pointe** et votre heure actuelle.
 

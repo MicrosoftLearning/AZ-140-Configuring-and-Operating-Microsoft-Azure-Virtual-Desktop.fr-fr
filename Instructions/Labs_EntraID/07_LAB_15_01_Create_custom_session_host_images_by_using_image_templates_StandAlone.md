@@ -382,7 +382,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Taille de la machine virtuelle|**Standard D2s v3**|
     |Nombre d'ordinateurs virtuels|**1**|
     |Type de disque du système d’exploitation|**SSD Standard**|
-    |Taille du disque de système d’exploitation|**Taille par défaut (128 Gio)**|
+    |Taille du disque de système d’exploitation|**Taille par défaut**|
     |Diagnostics de démarrage|**Activer avec le compte de stockage managé (recommandé)**|
     |Réseau virtuel|az140-vnet15d|
     |Sous-réseau|**hp1-Subnet**|

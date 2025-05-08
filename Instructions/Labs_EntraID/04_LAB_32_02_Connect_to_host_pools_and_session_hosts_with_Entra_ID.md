@@ -58,7 +58,7 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Note** : utilisez les informations d’identification du compte `User1-` répertorié dans l’onglet Ressources sur le côté droit de la fenêtre de session de labo.
 
-1. Dans le navigateur web affichant le portail Azure, dans la page **az140-21-hp1**, dans la barre de menus verticale, dans la section **Paramètres**, sélectionnez l’entrée **Propriétés RDP**.
+1. Dans le navigateur web affichant le portail Azure, sur la page du pool d’hôtes Azure Virtual Desktop **az140-21-hp1**, dans la barre de menu verticale, dans la section **Paramètres**, sélectionnez l’entrée **Propriétés RDP**.
 1. Dans la page **Propriétés RDP az140-21-hp1 \|**, sélectionnez l’onglet **Avancé**. 
 1. Dans l’onglet **Avancé** de la page **Propriétés RDP az140-21-hp1 \|**, dans la zone de texte **Propriétés RDP**, ajoutez la chaîne suivante au contenu existant (veillez à ajouter un point-virgule de début (`;`) si nécessaire pour séparer cette chaîne de celle qui la précède :
 

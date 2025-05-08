@@ -14,7 +14,7 @@ lab:
 
 ## Durée estimée
 
-30 minutes
+60 minutes
 
 ## Scénario de labo
 
@@ -72,7 +72,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Région|Nom de la région Azure dans laquelle vous souhaitez déployer l’environnement Azure Virtual Desktop|
 
 1. Sous l’onglet **Sécurité**, acceptez les paramètres par défaut et sélectionnez **Suivant**.
-1. Dans l’onglet **Adresses IP**, spécifiez les paramètres suivants :
+1. Dans l’onglet **Adresses IP**, appliquez les paramètres suivants (modifiez la valeur par défaut si nécessaire) :
 
     |Paramètre|Valeur|
     |---|---|
