@@ -15,7 +15,7 @@ lab:
 
 ## Durée estimée
 
-40 minutes
+60 minutes
 
 ## Scénario de labo
 
@@ -222,14 +222,14 @@ Les principales tâches de cet exercice sont les suivantes
     |Abonnement|Nom de l’abonnement Azure que vous utilisez dans ce labo|
     |Resource group|**az140-11e-RG**|
 
-    > **Note** : cette étape tire parti de la zone DNS privée nommée **privatelink.wvd.microsoft.com** que vous avez créée dans l’une des tâches précédentes.
+    > **Note** : cette étape entraîne la création d’une zone DNS privée nommée **privatelink-global.wvd.microsoft.com**.
 
 1. Dans l’onglet **Balises** de la page **Créer un point de terminaison privé**, sélectionnez **Suivant : Examiner et créer**.
 1. Dans l’onglet **Examiner et créer** de la page **Créer un point de terminaison privé**, sélectionnez **Créer**.
 
     > **Remarque** : N’attendez pas que le déploiement se termine, mais passez à la tâche suivante. Le déploiement peut prendre environ une minute.
 
-    > **Note** : vous devez créer un point de terminaison privé pour la sous-ressource de flux pour chaque espace de travail à utiliser avec Private Link.
+    > **Note** : vous devez créer un point de terminaison privé pour la sous-ressource globale de chaque espace de travail que vous souhaitez utiliser avec Private Link.
 
     > **Note** : pour que les modifications réseau prennent effet, vous devez redémarrer les hôtes de session dans le pool d’hôtes cible.
 
@@ -275,7 +275,7 @@ Les principales tâches de cet exercice sont les suivantes
     |Région|Nom de la région Azure où vous avez déployé votre environnement Azure Virtual Desktop|
     |Options de disponibilité|**Aucune redondance de l’infrastructure requise**|
     |Type de sécurité|**Standard**|
-    |Image|**Windows 11 Professionnel, version 23H2 - x64 Gen2**|
+    |Image|**Windows 11 Professionnel, version 24H2 - x64 Gen2**|
     |Taille|**Standard D2s v3**|
     |Nom d’utilisateur|Tout nom d’utilisateur valide de votre choix|
     |Mot de passe|Tout mot de passe complexe de votre choix|

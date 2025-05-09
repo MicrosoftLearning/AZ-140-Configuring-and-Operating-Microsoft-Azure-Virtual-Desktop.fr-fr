@@ -85,7 +85,7 @@ Les principales tâches de cet exercice sont les suivantes
 1. Dans la liste des classeurs **Windows Virtual Desktop**, dans la section **Windows Virtual Desktop**, sélectionnez le classeur **Insights**.
 1. Dans la page **Classeurs \| Insights Azure Virtual Desktop \|**, passez en revue les messages d’avertissement indiquant que l’espace de travail et les hôtes de session n’envoient pas de données à l’espace de travail, puis sélectionnez le lien **Classeur de configuration** pour résoudre le problème.
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, dans la liste déroulante **Espace de travail Log Analytics**, sélectionnez **az140-laworkspace41e**.
-1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, dans la section **Pool d’hôtes az140-21-hp1**, notez le message d’avertissement indiquant qu’aucune configuration de diagnostic existante n’a été trouvée pour le pool d’hôtes sélectionné, puis sélectionnez **Configurer le pool d’hôtes**.
+1. Sur la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, dans la section **Pool d’hôtes az140-21-hp1**, examinez le message d’avertissement indiquant qu’aucune configuration de diagnostic existante n’a été trouvée pour le pool d’hôtes sélectionné, puis sélectionnez **Configurer le pool d’hôtes**.
 1. Dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
 
     > **Note** : cela active efficacement les tables de diagnostic suivantes dans l’espace de travail Log Analytics cible :
@@ -116,27 +116,26 @@ Les principales tâches de cet exercice sont les suivantes
 
     > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
-1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
+1. Sur la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte de session**, sélectionnez l’icône **Actualiser** (la flèche circulaire) dans la barre d’outils.
 
     > **Note** : avant de continuer, assurez-vous que la DCR nouvellement créée est répertoriée dans la sous-section **DCR disponibles** de la section **Créer une DCR**. Si ce n’est pas le cas, attendez encore une minute et actualisez à nouveau la page.
 
-1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la liste déroulante **DCR sélectionnée**, sélectionnez l’entrée commençant par le préfixe **microsoft-avdi-**.
-1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la section **Associations DCR**, sélectionnez **Déployer une association**.
-1. Dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
+1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte de session**, dans la liste déroulante **DCR sélectionnée**, sélectionnez l’entrée commençant par le préfixe **microsoft-avdi-**.
+1. Si nécessaire, dans l’onglet **Paramètres des données de l’hôte de session**, dans la section **Associations DCR**, sélectionnez **Déployer une association** et, dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
 
     > **Note** : cela associe efficacement la DCR nouvellement créée aux hôtes de session dans le pool d’hôtes **az140-21-hp1**.
 
     > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
 
-1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
-1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la section **Hôtes de session dont l’extension Azure Monitor est manquante**, sélectionnez **Ajouter une extension**.
+1. Sur la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte de session**, sélectionnez l’icône **Actualiser** (la flèche circulaire) dans la barre d’outils.
+1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte de session**, dans la section **Hôtes de session dont l’extension Azure Monitor est manquante**, sélectionnez **Ajouter une extension**.
 1. Dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
 
     > **Note** : cette opération installe efficacement l’extension Azure Monitor sur les hôtes de session dans le pool d’hôtes **az140-21-hp1**.
 
     > **Remarque** : Attendez la fin du déploiement. Cela peut prendre environ 1 minute.
 
-1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
+1. Sur la page **CheckAMAConfiguration**, dans l’onglet **Sélectionner les paramètres des données de l’hôte de session**, sélectionnez l’icône **Actualiser** (la flèche circulaire) dans la barre d’outils.
 1. Vérifiez qu’aucune erreur ou message d’avertissement n’est affiché. 
 1. Accédez au haut de la page **CheckAMAConfiguration**, sélectionnez l’onglet **Données générées**, puis sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Passez en revue les sections affichant des graphiques représentant des données collectées, y compris **Données facturées au cours des 24 dernières heures**, **Compteurs de performances** et **Événements**.
