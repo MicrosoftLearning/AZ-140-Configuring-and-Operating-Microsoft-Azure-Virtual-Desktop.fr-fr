@@ -32,7 +32,7 @@
 
 > **Important** : les labos ont été mis à jour pour cibler les scénarios basés sur Microsoft Entra ID relatifs à l’implémentation d’Azure Virtual Desktop (les instructions pour ce labo se trouvent dans le répertoire **Instructions** -&gt;**Labs_EntraID**). 
 
-> **Important** : les deux pistes suivantes ne sont plus mises à jour ni prises en charge et seront supprimées le 1er juin 2025 (les instructions pour ce labo se trouvent dans le répertoire **Instructions** -&gt;**Labs**).
+> **Important** : les deux pistes suivantes ne sont plus mises à jour ni prises en charge (les instructions pour ce labo se trouvent dans le répertoire **Instructions** -&gt;**Labs_Legacy**).
 
 - Active Directory Domain Services (AD DS). Cette piste comprend les labos suivants :
 
