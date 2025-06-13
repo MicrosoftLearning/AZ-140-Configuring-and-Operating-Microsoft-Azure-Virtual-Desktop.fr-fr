@@ -303,7 +303,7 @@ Les principales tâches de cet exercice sont les suivantes
     |---|---|
     |Source|**Adresses IP**|
     |Plages d’adresses IP/CIDR sources|Laisser inchangé (cela doit toujours contenir votre adresse IP publique)|
-    |Plages de ports sources|*|
+    |Source port ranges|*|
     |Destination|**Any**|
     |Service|**RDP**|
     |Action|**Autoriser**|
@@ -351,8 +351,6 @@ Les principales tâches de cet exercice sont les suivantes
 1. À l’invite de commandes, tapez **logoff**, puis appuyez sur l'**Entrée** touche pour vous déconnecter de la session d’application distante actuelle.
 
    > **Note** : si vous le souhaitez, vous pouvez envisager de tenter de vous abonner au flux et de vous connecter à l’espace de travail Azure Virtual Desktop à partir de l’ordinateur de labo pour vérifier que cette connexion échouera. 
-
-    > **Note** : pour réduire les frais associés à l’exécution de l’environnement de labo, vous allez arrêter et libérer la machine virtuelle Azure nouvellement provisionnée.
 
 #### Tâche 7 : autoriser l’accès au réseau public à un pool d’hôtes et à un espace de travail
 
