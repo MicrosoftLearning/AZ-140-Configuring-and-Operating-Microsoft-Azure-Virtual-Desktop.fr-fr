@@ -110,8 +110,8 @@ Les principales tâches de cet exercice sont les suivantes
 
 1. Dans la page **CheckAMAConfiguration**, dans l’onglet **Paramètres de diagnostics des ressources**, sélectionnez l’icône **Actualiser** (flèche circulaire) dans la barre d’outils.
 1. Passez en revue la section **Espace de travail az140-21-ws1** et vérifiez que les paramètres de diagnostic sont activés pour **allLogs** et qu’il ne reste pas de messages d’avertissement.
-1. Accédez au haut de la page **CheckAMAConfiguration** et basculez vers l’onglet **Sélectionner les paramètres de données de l’hôte**.
-1. Dans l’onglet **Sélectionner les paramètres des données de l’hôte**, dans la section **Créer une DCR**, dans la liste déroulante **Destination de l’espace de travail**, sélectionnez **az140-laworkspace41e**, puis sélectionnez **Créer une règle de collecte de données**.
+1. Accédez au haut de la page **CheckAMAConfiguration** et basculez vers l’onglet **Paramètres des données de l’hôte de la session**.
+1. Dans l’onglet **Paramètres des données de l’hôte de la session**, dans la section **Créer une DCR**, dans la liste déroulante **Destination de l’espace de travail**, sélectionnez **az140-laworkspace41e**, puis **Créer une règle de collecte de données**.
 1. Dans le volet **Déployer un modèle**, sélectionnez **Déployer**.
 
     > **Remarque** : Attendez la fin du déploiement. Cette étape prend généralement moins d’une minute.
